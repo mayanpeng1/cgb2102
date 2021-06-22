@@ -11,9 +11,9 @@
         <module name="spring_demo_2_factory" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="spring_demo_1_ioc" target="1.5" />
-      <module name="spring_demo_2_factory" target="1.5" />
+    <bytecodeTargetLevel target="8">
+      <module name="spring_demo_1_ioc" target="8" />
+      <module name="spring_demo_2_factory" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>

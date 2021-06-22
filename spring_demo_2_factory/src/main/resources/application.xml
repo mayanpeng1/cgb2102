@@ -3,8 +3,15 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <!--静态工厂实例化对象的写法 方法必须是static-->
+    <!--1.静态工厂实例化对象的写法 方法必须是static-->
     <bean id="calendar1" class="com.jt.factory.StaticFactory" factory-method="getCalendar"></bean>
+
+    <!--2.实例化工厂   步骤1:将工厂交给spring 容器管理  步骤2：通过对象调用方法-->
+    <bean id="InstanceFactory" class="com.jt.factory.InstanceFactory"></bean>
+    <bean id="calendar2" factory-bean="InstanceFactory" factory-method="getCalendar"></bean>
+
+    <!--3.spring的工厂模式-->
+    <bean id="calendar3" class="com.jt.factory.SpringFactory"></bean>
 
 
 </beans>

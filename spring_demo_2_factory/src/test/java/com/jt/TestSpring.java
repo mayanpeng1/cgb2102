@@ -14,4 +14,20 @@ public class TestSpring {
         Calendar calendar1 = (Calendar) context.getBean("calendar1");
         System.out.println("当前时间为："+calendar1.getTime());
     }
+
+    @Test
+    public void testInstance(){
+        ApplicationContext context = new ClassPathXmlApplicationContext("application.xml");
+        Calendar calendar2 = (Calendar) context.getBean("calendar2");
+        System.out.println("当前时间为："+calendar2.getTime());
+
+    }
+
+    @Test
+    public void testSpringFactory(){
+        ApplicationContext context = new ClassPathXmlApplicationContext("application.xml");
+        Calendar calendar3 = (Calendar) context.getBean("calendar3");
+        System.out.println("当前时间为："+calendar3.getTime());
+
+    }
 }
