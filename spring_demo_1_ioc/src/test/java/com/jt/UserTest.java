@@ -4,6 +4,9 @@ import com.jt.pojo.User;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import sun.util.resources.cldr.ss.CalendarData_ss_SZ;
+
+import java.util.Calendar;
 
 public class UserTest {
 
@@ -23,7 +26,15 @@ public class UserTest {
     }
 
     @Test
-    public void Demo(){
+    public void demo2() throws ClassNotFoundException, IllegalAccessException, InstantiationException {
+        //1.通过类的路径实例化类型
+        Class userClass = Class.forName("com.jt.pojo.User");
+
+        //2.实例化对象
+        User user = (User) userClass.newInstance();
+
+        //3.执行
+        user.say();
 
     }
 }
