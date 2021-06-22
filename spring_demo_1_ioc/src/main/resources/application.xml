@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--1.动态生成Spring配置文件  注意头标签-->
+
+    <!--2.Spring容器管理对象
+        id: Spring容器中对象的唯一标识 不能重复 一般类名首字母小写
+        class: 类的全路径 包名.类名
+    -->
+    <bean id="user" class="com.jt.pojo.User"></bean>
+
+
+</beans>
