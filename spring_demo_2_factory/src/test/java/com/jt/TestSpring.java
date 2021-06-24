@@ -25,6 +25,7 @@ public class TestSpring {
 
     }
 
+
     @Test
     public void testSpringFactory() {
         ApplicationContext context = new ClassPathXmlApplicationContext("application.xml");
@@ -33,6 +34,7 @@ public class TestSpring {
 
     }
 
+    //测试单例多例/懒加载
     @Test
     public void testUser() {
         ApplicationContext context = new ClassPathXmlApplicationContext("application.xml");
@@ -42,5 +44,16 @@ public class TestSpring {
         context.getBean("user");
     }
 
+    //测试声明周期运行
+    @Test
+    public void testLife() {
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("application.xml");
+        //获取对象
+        User user = (User) context.getBean("user");
+        //3.用户调用方法
+        user.say();
+        //4.只要容器失败,则对象想回
+        context.close();
 
+    }
 }
