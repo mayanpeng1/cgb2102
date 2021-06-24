@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+   <!--1.构建user对象-->
+   <bean id="user" class="com.jt.pojo.User">
+      <!--根据name的属性查找对象的sentId()方法 将value当作参数调用set方法完成赋值-->
+      <property name="id" value="100"></property>
+     <!-- <property name="name" value="&lt;范冰冰&gt;"></property>-->
+      <property name="name">
+         <value><![CDATA[<范冰冰>]]></value>
+      </property>
+   </bean>
+
+   <!--2.构建Dao对象
+      根据面向接口编程
+         Id:接口的名称
+         class:实现类的包路径
+   -->
+   <bean id="userDao" class="com.jt.dao.UserDaoImpl"></bean>
+
+   <!--3.构建Service
+      自动装配:程序无需手动的编译property属性
+      autowire="byName" 根据属性的名称进行注入
+         1.找到对象的所有的set方法 setUserDao()
+         2.setUserDao ~~ set去掉 —————— UserDao 首字母小写 —————— userDao属性
+         3.Spring会根据对象的属性查询自己维护的Map集合,根据userDao名称,查找Map
+         中的Key与之队应,如果匹配成功，则能自动调用set方法实现输入(必须有set方法)
+
+       autowire="byType"
+         1.找到对象的所有set方法 setUserDao()
+         2.根据set方法找到方法中参数的类型UserDao.class
+         3.Spring根据自己维护对象的Class进行匹配,如果匹配成功则实现注入(set方法)
+   -->
+   <bean id="userService" class="com.jt.service.UserServiceImpl" autowire="byName">
+
+   </bean>
+
+   <!--4.构建Controller-->
+   <bean id="userController" class="com.jt.controller.UserController">
+      <property name="userService" ref="userService"></property>
+      <property name="user" ref="user"></property>
+   </bean>
+</beans>

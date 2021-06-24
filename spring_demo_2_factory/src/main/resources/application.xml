@@ -27,13 +27,13 @@
         多例对象:用户使用时创建,同时将对象的生命周期交给使用者管理,Spring不负责维护对象的声明周期
         (随用随销)
     -->
-    <!--<bean id="user" class="com.jt.pojoo.User" lazy-init="true"></bean>-->
+    <!--<bean id="user" class="com.jt.pojo.User" lazy-init="true"></bean>-->
 
     <!--
         测试对象的生命周期
         init-method = "init" 初始化方法
         destory-method = "destroy" 销毁方法
      -->
-    <bean id="user" class="com.jt.pojoo.User" init-method="init"
+    <bean id="user" class="com.jt.pojo.User" init-method="init"
           destroy-method="destory" ></bean>
 </beans>

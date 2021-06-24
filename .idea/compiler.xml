@@ -7,13 +7,19 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="spring_demo_3_di" />
         <module name="spring_demo_1_ioc" />
         <module name="spring_demo_2_factory" />
+        <module name="spring_demo_5_annotation" />
+        <module name="spring_demo_4_mvc" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="8">
       <module name="spring_demo_1_ioc" target="8" />
       <module name="spring_demo_2_factory" target="8" />
+      <module name="spring_demo_3_di" target="8" />
+      <module name="spring_demo_4_mvc" target="8" />
+      <module name="spring_demo_5_annotation" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>

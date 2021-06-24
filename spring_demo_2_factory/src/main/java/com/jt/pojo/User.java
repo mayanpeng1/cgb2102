@@ -1,4 +1,4 @@
-package com.jt.pojoo;
+package com.jt.pojo;
 
 public class User {
     private String conn; //数据库连接

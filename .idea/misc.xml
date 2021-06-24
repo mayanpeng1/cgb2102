@@ -5,6 +5,9 @@
       <list>
         <option value="$PROJECT_DIR$/spring_demo_2_factory/pom.xml" />
         <option value="$PROJECT_DIR$/spring_demo_1_ioc/pom.xml" />
+        <option value="$PROJECT_DIR$/spring_demo_3_di/pom.xml" />
+        <option value="$PROJECT_DIR$/spring_demo_5_annotation/pom.xml" />
+        <option value="$PROJECT_DIR$/spring_demo_4_mvc/pom.xml" />
       </list>
     </option>
   </component>

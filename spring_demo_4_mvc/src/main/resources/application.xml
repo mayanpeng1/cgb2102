@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+   <!--1.构建user对象-->
+   <bean id="user" class="com.jt.pojo.User">
+      <property name="id" value="100"></property>
+     <!-- <property name="name" value="&lt;范冰冰&gt;"></property>-->
+      <property name="name">
+         <value><![CDATA[<范冰冰>]]></value>
+      </property>
+   </bean>
+
+   <!--2.构建Dao对象
+      根据面向接口编程
+         Id:接口的名称
+         class:实现类的包路径
+   -->
+   <bean id="userDao" class="com.jt.dao.UserDaoImpl"></bean>
+
+   <!--3.构建Service-->
+   <bean id="userService" class="com.jt.service.UserServiceImpl">
+      <property name="userDao" ref="userDao"></property>
+   </bean>
+
+   <!--4.构建Controller-->
+   <bean id="userController" class="com.jt.controller.UserController">
+      <property name="userService" ref="userService"></property>
+      <property name="user" ref="user"></property>
+   </bean>
+</beans>
