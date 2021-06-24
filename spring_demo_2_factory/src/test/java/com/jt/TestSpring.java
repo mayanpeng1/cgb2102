@@ -1,5 +1,6 @@
 package com.jt;
 
+import com.jt.pojoo.User;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -28,6 +29,17 @@ public class TestSpring {
         ApplicationContext context = new ClassPathXmlApplicationContext("application.xml");
         Calendar calendar3 = (Calendar) context.getBean("calendar3");
         System.out.println("当前时间为："+calendar3.getTime());
+
+    }
+
+    @Test
+    public void testUser(){
+        ApplicationContext context = new ClassPathXmlApplicationContext("application.xml");
+         context.getBean("user");
+         context.getBean("user");
+         context.getBean("user");
+         context.getBean("user");
+
 
     }
 }

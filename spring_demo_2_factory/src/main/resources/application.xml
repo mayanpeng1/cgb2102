@@ -14,4 +14,19 @@
     <bean id="calendar3" class="com.jt.factory.SpringFactory"></bean>
 
 
+    <!--4.测试多例模式  通过scope属性控制对象的单例 和 多例
+        scope="prototype" 多例设置
+        scope="singleton" 缺省值   单例
+
+        懒加载:
+        lazy-init="true"开启懒加载
+        lazy-init="false"/lazy-init="default"  懒加载不生效
+
+        原则:只要是多利对象 都是懒加载,懒加载只对单例对象有效
+        关于懒加载说明:一般服务器对象应该先行创建,用户直接使用即可
+        多例对象:用户使用时创建,同时将对象的生命周期交给使用者管理,Spring不负责维护对象的声明周期
+        (随用随销)
+    -->
+    <bean id="user" class="com.jt.pojoo.User" lazy-init="true"></bean>
+
 </beans>
