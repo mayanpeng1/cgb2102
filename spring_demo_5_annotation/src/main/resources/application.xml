@@ -32,6 +32,8 @@
          1.找到对象的所有set方法 setUserDao()
          2.根据set方法找到方法中参数的类型UserDao.class
          3.Spring根据自己维护对象的Class进行匹配,如果匹配成功则实现注入(set方法)
+
+         autowire：规则 如果配置了byName则首先按照name查找,如果查找不到按照byType方式查找
    -->
    <bean id="userService" class="com.jt.service.UserServiceImpl" autowire="byName">
 
