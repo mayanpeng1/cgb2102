@@ -15,4 +15,13 @@ public class TestSpring {
         userController.addUser();
         System.out.println("恭喜学会MVC结构");
     }
+
+    @Test
+    public void testSpring(){
+        ApplicationContext context =
+                new ClassPathXmlApplicationContext("application-annotation.xml");
+        UserController userController = (UserController) context.getBean("userController");
+
+        System.out.println(userController);
+    }
 }

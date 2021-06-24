@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+   <!--1.构建user对象-->
+   <bean id="user" class="com.jt.pojo.User">
+      <!--根据name的属性查找对象的sentId()方法 将value当作参数调用set方法完成赋值-->
+      <property name="id" value="100"></property>
+     <!-- <property name="name" value="&lt;范冰冰&gt;"></property>-->
+      <property name="name">
+         <value><![CDATA[<范冰冰>]]></value>
+      </property>
+   </bean>
+
+   <!--2.让注解生效,开启包扫描
+         包路径特点:给定包路径,则自动扫面同包及子孙包中的类
+         base—package 根据指定的包路径  查找注解
+   -->
+   <context:component-scan base-package="com.jt"></context:component-scan>
+</beans>

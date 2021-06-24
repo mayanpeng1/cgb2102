@@ -2,7 +2,9 @@ package com.jt.controller;
 
 import com.jt.pojo.User;
 import com.jt.service.UserService;
+import org.springframework.stereotype.Controller;
 
+@Controller
 public class UserController {
 
     //spring容器负责注入Service对象
