@@ -18,6 +18,10 @@
    <!--2.让注解生效,开启包扫描
          包路径特点:给定包路径,则自动扫面同包及子孙包中的类
          base—package 根据指定的包路径  查找注解
+         写方式:多个包路径 使用,号分隔
    -->
-   <context:component-scan base-package="com.jt"></context:component-scan>
+   <context:component-scan base-package="com.jt"/>
+
+   <!--情景1:只想扫描个别注解-->
+   <!--情景2:不想扫描某个注解-->
 </beans>
