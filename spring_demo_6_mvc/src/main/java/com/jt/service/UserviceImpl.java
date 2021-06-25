@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserviceImpl implements UserService{
     @Autowired //根据类型进行注入
-    @Qualifier() //必须按照名称进行匹配 一般不写
+    //@Qualifier() //必须按照名称进行匹配 一般不写
     private UserDao userDao;
 
     @Override
