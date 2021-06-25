@@ -18,7 +18,8 @@ public class UserController {
     }
 
     public void addUser(){
-
+        //手动的构建一个user参数
+        User user = new User();
         userService.addUser(user);
     }
 

@@ -9,7 +9,7 @@
    <bean id="user" class="com.jt.pojo.User">
       <!--根据name的属性查找对象的sentId()方法 将value当作参数调用set方法完成赋值-->
       <property name="id" value="100"></property>
-     <!-- <property name="name" value="&lt;范冰冰&gt;"></property>-->
+      <!-- <property name="name" value="&lt;范冰冰&gt;"></property>-->
       <property name="name">
          <value><![CDATA[<范冰冰>]]></value>
       </property>
@@ -22,6 +22,23 @@
    -->
    <context:component-scan base-package="com.jt"/>
 
-   <!--情景1:只想扫描个别注解-->
+   <!--情景1:只想扫描个别注解
+      属性1: user-default-filters="true" 默认条件下扫描包中的所有注解
+            user-default-filters="false"  按照用户指定的规则扫描注解
+   -->
+   <!--expression： 表达式 可以写包路径-->
+   <!--当前的包扫描  只有Service有效-->
+   <!--   <context:component-scan base-package="com.jt" use-default-filters="false">-->
+   <!--      <context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>-->
+   <!--   </context:component-scan>-->
+
+   <!--   <context:component-scan base-package="com.jt" use-default-filters="true">-->
+   <!--      <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>-->
+   <!--   </context:component-scan>-->
+
    <!--情景2:不想扫描某个注解-->
+   <!--   <context:component-scan base-package="com.jt" >-->
+   <!--      &lt;!&ndash;通过包扫描 可以加载其他的注解 排除Controller注解&ndash;&gt;-->
+   <!--      <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>-->
+   <!--   </context:component-scan>-->
 </beans>
