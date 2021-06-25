@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+   <!--管理user对象-->
+   <!--<bean id="user" class="com.jt.pojo.User">
+      &lt;!&ndash;调用对象的set方法实现赋值 set方法必须添加&ndash;&gt;
+      <property name="id" value="101"></property>
+      <property name="name" value="李元芳"></property>
+   </bean>-->
+
+   <!--构造方法进行注入-->
+  <!-- <bean id="user" class="com.jt.pojo.User">
+      <constructor-arg name="id" value="102"/>
+      <constructor-arg name="name" value="兰陵王"/>
+   </bean>-->
+
+   <!--为集合赋值-->
+   <bean id="user" class="com.jt.pojo.User">
+      <property name="id" value="101"></property>
+      <property name="name" value="李元芳"></property>
+      <property name="list">
+         <list>
+            <value>张三</value>
+            <value>王五</value>
+            <value>老王</value>
+         </list>
+      </property>
+      <property name="set">
+         <set>
+            <value>1</value>
+            <value>2</value>
+            <value>3</value>
+         </set>
+      </property>
+      <property name="map" ref="map">
+         <!--<map>
+            <entry key="id" value="1000"></entry>
+            <entry key="name" value="tomcat猫"></entry>
+         </map>-->
+      </property>
+      <property name="pro">
+         <props>
+            <prop key="proId">110</prop>
+            <prop key="proName">米老鼠</prop>
+         </props>
+      </property>
+   </bean>
+
+   <!--需要将同一个map进行赋值操作-->
+   <bean id="person" class="com.jt.pojo.Person">
+      <property name="map" ref="map">
+      </property>
+   </bean>
+
+   <!--3.定义公共的map标签-->
+   <util:map id="map">
+      <entry key="id" value="1000"></entry>
+      <entry key="name" value="tomcat猫"></entry>
+   </util:map>
+
+
+
+
+
+</beans>
