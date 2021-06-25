@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/spring_demo_3_di/spring_demo_3_di.iml" filepath="$PROJECT_DIR$/spring_demo_3_di/spring_demo_3_di.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring_demo_4_mvc/spring_demo_4_mvc.iml" filepath="$PROJECT_DIR$/spring_demo_4_mvc/spring_demo_4_mvc.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring_demo_5_annotation/spring_demo_5_annotation.iml" filepath="$PROJECT_DIR$/spring_demo_5_annotation/spring_demo_5_annotation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring_demo_6_mvc/spring_demo_6_mvc.iml" filepath="$PROJECT_DIR$/spring_demo_6_mvc/spring_demo_6_mvc.iml" />
     </modules>
   </component>
 </project>
