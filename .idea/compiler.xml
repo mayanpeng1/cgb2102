@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="spring_demo_6_mvc" />
         <module name="spring_demo_1_ioc" />
+        <module name="springboot_demo_1" />
         <module name="spring_demo_10_cache" />
         <module name="spring_demo_3_di" />
         <module name="spring_demo_2_factory" />
@@ -24,6 +25,12 @@
       <module name="spring_demo_4_mvc" target="1.8" />
       <module name="spring_demo_5_annotation" target="6" />
       <module name="spring_demo_6_mvc" target="1.8" />
+      <module name="springboot_demo_1" target="1.8" />
     </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="springboot_demo_1" options="-parameters" />
+    </option>
   </component>
 </project>
