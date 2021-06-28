@@ -47,13 +47,15 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
+			<!--只有当前项目有效-->
 			<optional>true</optional>
 		</dependency>
 
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<optional>true</optional>
+			<!--true 该jar包文件父子项目之间不传递-->
+<!--			<optional>true</optional>-->
 		</dependency>
 
 		<dependency>
@@ -69,6 +71,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
+					<!--在项目打包时将Lombok包除外-->
 					<excludes>
 						<exclude>
 							<groupId>org.projectlombok</groupId>
