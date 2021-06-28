@@ -1,0 +1,12 @@
+#YML 文件语法
+# 1.YML数据结构k-v结构
+# 2.k与v需要使用 : "空格"  连接
+# 3.YML配置文件有父子级的关系 所以注意缩进项的位置
+server:
+  port: 8090  #配置端口
+  servlet:    #web项目发布路径
+    context-path: /   #/表示根目录
+
+dept:
+  id: 100
+  name: 咨询部
