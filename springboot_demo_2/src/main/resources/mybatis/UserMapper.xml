@@ -2,9 +2,19 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+	namespace
+	1.Mapper.xml配置文件的唯一标识
+	2.需要与Mapper接口保持一致
+		UserMapper。findAll();  通过方法映射Sql语句!!!
+-->
 <mapper namespace="com.jt.demo.mapper.UserMapper">
-	
-	<select id="findAll" resultType="User">
+	<!-- 查询表情必须有返回值
+		resultType:直接返回pojo对象的数据  单表查询
+		resultMap:适用于关联查询的结果封装 一般采用第三方对象接收
+	-->
+	<select id="findAll" resultType="DemoUser">
 		select * from user
 	</select>
 </mapper>
