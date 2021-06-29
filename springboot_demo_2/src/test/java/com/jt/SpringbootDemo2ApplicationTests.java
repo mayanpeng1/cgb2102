@@ -20,4 +20,11 @@ class SpringbootDemo2ApplicationTests {
 		System.out.println(list);
 	}
 
+	@Test
+	void testInsert(){
+		DemoUser user = new DemoUser();
+		user.setId(null).setName("mybatis信息").setAge(18).setSex("男");
+		userMapper.insertUser(user);
+	}
+
 }

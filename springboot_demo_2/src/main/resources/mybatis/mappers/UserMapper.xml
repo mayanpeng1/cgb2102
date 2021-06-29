@@ -10,6 +10,13 @@
 		UserMapper。findAll();  通过方法映射Sql语句!!!
 -->
 <mapper namespace="com.jt.mapper.UserMapper">
+	<!--完成用户入库操作-->
+	<insert id="insertUser" >
+		INSERT INTO demo_user(id,name,age,sex)
+		values (null,#{name},#{age},#{sex})
+
+	</insert>
+
 	<!-- 查询表情必须有返回值
 		resultType:直接返回pojo对象的数据  单表查询
 		resultMap:适用于关联查询的结果封装 一般采用第三方对象接收
