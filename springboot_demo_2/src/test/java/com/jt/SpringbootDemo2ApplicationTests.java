@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.sql.SQLOutput;
 import java.util.List;
 
 @SpringBootTest
@@ -27,4 +26,12 @@ class SpringbootDemo2ApplicationTests {
 		userMapper.insertUser(user);
 	}
 
+	@Test
+	void testUpdate(){
+		String oldName = "mybatis信息";
+		String nowName = "测试信息";
+		String sex = "男";
+		userMapper.updateUser(oldName,nowName,sex);
+		System.err.println("ok");
+	}
 }

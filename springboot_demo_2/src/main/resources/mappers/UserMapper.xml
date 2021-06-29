@@ -17,6 +17,13 @@
 
 	</insert>
 
+	<!--修改用户信息-->
+	<!--void updateUser(String oldName, String nowName, String sex)-->
+	<update id="updateUser">
+		UPDATE demo_user set name = #{nowName} where name = #{oldName} and sex = #{sex}
+	</update>
+
+
 	<!-- 查询表情必须有返回值
 		resultType:直接返回pojo对象的数据  单表查询
 		resultMap:适用于关联查询的结果封装 一般采用第三方对象接收
