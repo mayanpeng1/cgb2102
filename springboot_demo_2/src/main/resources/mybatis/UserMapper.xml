@@ -13,8 +13,23 @@
 	<!-- 查询表情必须有返回值
 		resultType:直接返回pojo对象的数据  单表查询
 		resultMap:适用于关联查询的结果封装 一般采用第三方对象接收
+
+		问题:能否将不变的包路径进行优化???
+		解决方案:定义别名包即可
+		resultType="包名.类名"
+		resultType="com.jt.pojo.DemoUser"
+
+		定义别名包
+		type-aliases-package: com.jt.pojo
+		resultType="DemoUser"  可以直接返回对象的名称
+
+		程序解析时: 首先根据别名包的名称进行路径的拼接
+
 	-->
 	<select id="findAll" resultType="DemoUser">
+		select * from user
+	</select>
+	<select id="findAll" resultType="com.jt.pojo.DemoUser">
 		select * from user
 	</select>
 </mapper>
