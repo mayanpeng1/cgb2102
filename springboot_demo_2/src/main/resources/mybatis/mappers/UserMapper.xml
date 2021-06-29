@@ -9,7 +9,7 @@
 	2.需要与Mapper接口保持一致
 		UserMapper。findAll();  通过方法映射Sql语句!!!
 -->
-<mapper namespace="com.jt.demo.mapper.UserMapper">
+<mapper namespace="com.jt.mapper.UserMapper">
 	<!-- 查询表情必须有返回值
 		resultType:直接返回pojo对象的数据  单表查询
 		resultMap:适用于关联查询的结果封装 一般采用第三方对象接收
@@ -27,9 +27,7 @@
 
 	-->
 	<select id="findAll" resultType="DemoUser">
-		select * from user
+		select * from demo_user
 	</select>
-	<select id="findAll" resultType="com.jt.pojo.DemoUser">
-		select * from user
-	</select>
+
 </mapper>
