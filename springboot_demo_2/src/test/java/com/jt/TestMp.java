@@ -6,9 +6,8 @@ import com.jt.pojo.DemoUser;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.xmlunit.util.Mapper;
+import org.springframework.util.StringUtils;
 
-import java.util.Arrays;
 import java.util.List;
 
 @SpringBootTest
@@ -121,5 +120,56 @@ public class TestMp {
         }
     }
 
+    /** 条件查询
+     * 需求:如果根据name属性和age属性查询数据,有事某个数据可能会为null(""),
+     *      要求动态查询!!!
+     * 例如: select * from demo_user where name!=null name = xxx and age!=null age>xxx
+     * condition: 内部编辑一个判断条件
+     *            如果返回值结果为true 则拼接该字段
+     *            如果为false 则不进行拼接该字段
+     * StringUtils。hasLength(name)  判断该字符窜时候有效
+     */
+    @Test
+    void testService6(){
+        QueryWrapper<DemoUser> queryWrapper = new QueryWrapper<>();
+        String name = "";
+        Integer age = 20;
+        // queryWrapper.eq(name!=null && name !="", "name", name)
+        //         .gt(age>0,"age", age);
+        queryWrapper.eq(StringUtils.hasLength(name), "name", name)
+                .gt(age>0,"age",age );
+        List<DemoUser> users = userMapper.selectList(queryWrapper);
+        for (DemoUser user : users) {
+            System.err.println(user);
+        }
 
+    }
+
+    /** 查询第一列数据
+     * 需求:只想查询第一列数据   selectObjs
+     * 说明:queryWrapper=null 不需要where条件
+     * selectObjs:
+     *      1.一般根据条件查询Id的值,查询之后为后续的sql提供数据支持
+     *      2.有时用户只需要查询ID的值,并不需要其他数据项是 使用objs
+     */
+    @Test
+    void testService7(){
+        QueryWrapper<DemoUser> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq(  "sex","男" );//添加查询条件
+        List objs = userMapper.selectObjs(queryWrapper);//只查询第一列数据
+        System.err.println(objs);
+    }
+
+    /** 制定某一列字段查询
+     * 需求: 想查询name/sex字段
+     * queryWrapper.select("name","sex"); 挑选执行字段
+     */
+
+    @Test
+    public void testSelect8(){
+        QueryWrapper<DemoUser> queryWrapper = new QueryWrapper<>();
+        queryWrapper.select("name","sex");
+        List objs = userMapper.selectList(queryWrapper);
+        System.err.println(objs);
+    }
 }
