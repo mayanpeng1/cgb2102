@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.util.StringUtils;
 
 import java.util.List;
+import java.util.Map;
 
 @SpringBootTest
 public class TestMp {
@@ -169,7 +170,48 @@ public class TestMp {
     public void testSelect8(){
         QueryWrapper<DemoUser> queryWrapper = new QueryWrapper<>();
         queryWrapper.select("name","sex");
-        List objs = userMapper.selectList(queryWrapper);
+        List<DemoUser> objs = userMapper.selectList(queryWrapper);
         System.err.println(objs);
     }
+
+    /**
+     * 返回有效字段的查询
+     * queryWrapper.select("name","sex")  选择执行字段
+     * selectMaps 将有效数据装到map集合中
+     */
+    @Test
+    void testSelect9(){
+        QueryWrapper<DemoUser> queryWrapper = new QueryWrapper<>();
+        queryWrapper.select("name","sex");
+        List<Map<String,Object>> lists = userMapper.selectMaps(queryWrapper);
+        for (Map<String, Object> list : lists) {
+            System.err.println(list);
+        }
+
+    }
+
+
+    /** 实现更新操作
+     *  更新操作
+     *      将name="中午吃什么"  改为name="晚上吃什么"
+     *      性别: 改为 其他
+     *  sql:
+     *  update demo_user set name="xx",set="xx" where mame="xx"
+     *  
+     *  参数说明: .update(entity, queryWrapper);
+     *      1.entity  实体对象(修改后的值)
+     *      2.queryWrapper 条件构造器(条件)
+     */
+    @Test
+    void testSelect10(){
+        DemoUser user = new DemoUser();
+        user.setName("晚上吃什么").setSex("其他");// set name = xxx  ,sex = xxx
+        QueryWrapper<DemoUser> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("name", "中午吃什么");//条件 where name = #{name}
+        userMapper.update(user, queryWrapper);
+        System.err.println("OK");
+
+    }
+
+
 }

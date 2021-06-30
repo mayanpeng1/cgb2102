@@ -5,7 +5,6 @@ import com.jt.pojo.DemoUser;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-@Repository
 //注意事项:basemapper必须添加泛型对象  切记!!!
 public interface UserMapper extends BaseMapper<DemoUser> {
     //使用MP 不要重载里面的方法容易解析 异常
