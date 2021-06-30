@@ -13,9 +13,14 @@ class SpringbootDemo2ApplicationTests {
 
 	@Autowired
 	private UserMapper userMapper;
+
+	//数据库查询
 	@Test
-	void contextLoads() {
+	void testFindAll() {
+		//代理的测试  jdk动态代理
+
 		List<DemoUser> list = userMapper.findAll();
+		System.out.println(userMapper.getClass());
 		System.out.println(list);
 	}
 
@@ -33,5 +38,12 @@ class SpringbootDemo2ApplicationTests {
 		String sex = "男";
 		userMapper.updateUser(oldName,nowName,sex);
 		System.err.println("ok");
+	}
+
+	//测试 MybatisPlus
+	@Test
+	void testSelect(){
+		List<DemoUser> users = userMapper.selectList(null);
+		System.out.println(users);
 	}
 }

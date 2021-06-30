@@ -1,12 +1,13 @@
 package com.jt.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.jt.pojo.DemoUser;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-
-public interface UserMapper {
+//注意事项:basemapper必须添加泛型对象  切记!!!
+public interface UserMapper extends BaseMapper<DemoUser> {
 
     List<DemoUser> findAll();
 
