@@ -18,5 +18,8 @@ mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
 
-  
-  
+
+#添加MP日志  打印执行的SQL
+logging:
+  level:
+    com.jt.mapper: debug

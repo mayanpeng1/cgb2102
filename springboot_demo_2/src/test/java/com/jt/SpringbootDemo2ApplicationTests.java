@@ -46,4 +46,5 @@ class SpringbootDemo2ApplicationTests {
 		List<DemoUser> users = userMapper.selectList(null);
 		System.out.println(users);
 	}
+
 }
