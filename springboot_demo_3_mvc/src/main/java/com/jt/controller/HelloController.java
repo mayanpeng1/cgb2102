@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HelloController {
     /**
      * 需求: http://localhost:8090/hello   访问hello.html
+     *      http://localhost:8090/say   访问say.html
      * 实现步骤:
      *      1.拦截用户请求 @RequestMapping("/hello")
      *      2.String 类型的返回值 表示返回页面名称
@@ -19,4 +20,10 @@ public class HelloController {
         //classpath:/templates/hello.html
         return "hello";
     }
+
+    @RequestMapping("/say")
+    public String say(){
+        return "say";
+    }
+
 }

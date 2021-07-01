@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--导入模板标签-->
+<html lang="en" xml:th="http://www.thymeleaf.org" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>SpringMVC测试案例</title>
+</head>
+<body>
+    <h1>用户测试代码</h1>
+    <!--从服务器中获取数据  表达式  ${从服务器中的key}-->
+    <h3 th:text="${id}"></h3>
+    <h3 th:text="${name}"></h3>
+
+    <hr>
+    <form action="/addUser" method="POST">
+        <table border="1px"  cellspacing="0" align="center" width="350px" style="margin-top: 50px">
+            <tr align="center">
+                <td colspan="2"><h1>表格数据提交</h1></td>
+            </tr>
+            <tr>
+                <td>ID:</td>
+                <!--
+                     id:标签的唯一标识 不能重复
+                     name: MVC 数据传递的必备要素.  不能省略
+                  -->
+                <td><input id="id" name="id" type="text"/></td>
+            </tr>
+            <tr>
+                <td>姓名:</td>
+                <td><input id="name" name="name" type="text"/></td>
+            </tr>
+
+
+            <tr>
+                <td colspan="2" align="center"><button type="submit">提交</button></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
