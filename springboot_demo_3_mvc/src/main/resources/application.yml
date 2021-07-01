@@ -1,0 +1,15 @@
+#配置服务端口
+server:
+  port: 8090
+
+#配置模板工具类
+spring:
+  thymeleaf:
+    #设置页面前缀
+    prefix: classpath:/templates/
+    #设置页面后缀
+    suffix: .html
+    #是否使用缓存
+    cache: false
+
+
