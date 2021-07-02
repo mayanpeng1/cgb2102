@@ -13,6 +13,45 @@ import java.util.Arrays;
 
 @Controller
 public class UserController {
+
+    /**
+     * 测试转发和重定向
+     * 1.准备一个请求 findUser请求
+     * 2.要求用户 转发到 findDog请求中
+     * 3.关键字  forward: 转发的是一个请求
+     *          redirect: 多次请求多次响应
+     * 4.特点:
+     *      1.转发时 会携带用户提交的数据
+     *      2.转发时 用户浏览器的地址不会发生改变
+     *      3.重定向时  由于是多次请求,所以不会携带用户的数据
+     *      4.重定向时  由于是多次请求,所以用户的浏览器地址会发生变化
+     * 5.转发的意义:
+     *      如果直接转发到页面中,如果页面需要额外的参数处理,则没有执行
+     *      如果在该方法中添加业务处理,则方法的耦合性高,不方便后续维护
+     *      所以方法应该尽可能松耦合
+     *
+     * 6.什么时候使用转发/什么时候使用重定向
+     *      1.如果需要携带参数  使用转发
+     *      2.如果一个业务已经完成  需要一个新的开始    使用重定向
+     */
+    @RequestMapping("/findUser")
+    public String findUser(String name){
+        //return 本身就是一个转发
+        // return "user1";
+        // return "dog"; 页面耦合性高
+        // return "forward:/findDog";  转发到findDog请求
+        return "redirect:/findDog";  //重定向到findDog请求
+    }
+
+    //需要将name属性返回给页面
+    @RequestMapping("/findDog")
+    public String findDog(String name,Model model){
+        System.err.println("动态获取name属性值:"+name);
+        model.addAttribute("name", name+"汪汪汪");
+        return "dog";
+    }
+
+
     /**
      * 在内部封装引用对象,使用User接收全部数据
      * 通过对象.的方式 封装所属关系.
