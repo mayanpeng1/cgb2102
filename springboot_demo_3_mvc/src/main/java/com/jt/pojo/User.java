@@ -14,4 +14,8 @@ public class User {
     private String name;
     private String [] hobbys;
     private Dog dog;//为了实现数据封装,必须将对象进行嵌套(引用)
+
+    public String getAge(){
+        return "今年18岁了!!!";
+    }
 }
