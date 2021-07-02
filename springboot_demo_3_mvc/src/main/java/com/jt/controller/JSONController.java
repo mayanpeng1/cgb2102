@@ -17,7 +17,9 @@ public class JSONController {
      *      getAge()  --- 去掉get首字母  --- Age()
      *      -- 首字母小写  age()  -- 获取属性  age
      *      -- 通过getAge() 动态获取属性的值
-     *
+     * JSON: {"age":"今年18岁!!!"}
+     * 注意事项:
+     *      必须添加get/set方法
      * @return
      */
     @RequestMapping("/getJSON")
