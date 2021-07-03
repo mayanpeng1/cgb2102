@@ -18,4 +18,8 @@ public class UserController {
         return "框架整合初步完成";
     }
 
+    /**
+     * 查询所有的用户列表数据  在  userList。html中展现数据
+     */
+
 }
