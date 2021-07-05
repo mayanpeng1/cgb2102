@@ -17,6 +17,17 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+
+    /**
+     * 要求跳转到userAjax页面中
+     * @return
+     */
+    @RequestMapping("/userAjax")
+    public String userAjax(){
+        return "userAjax";
+    }
+
+
     @RequestMapping("/demo")
     @ResponseBody
     public String demo(){
