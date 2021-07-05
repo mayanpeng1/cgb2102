@@ -5,6 +5,12 @@
 		<title>VUE入门案例</title>
 	</head>
 	<body>
+		
+		<div id="app">
+			<!-- 插值表达式  内容data的属性 -->
+			<h1>{{hello}}</h1>
+		</div>
+		
 		<!-- 1.导入vue.js的类库 -->
 		<script src="../js/vue.js"></script>
 		<!-- 2.编辑VUE.js -->
@@ -16,7 +22,11 @@
 			
 			//1.实例化VUE对象  函数式编程
 			const app = new Vue({
-				
+				//1.定义el元素  要在哪个位置使用vue进行渲染
+				el : "#app",
+				data:{
+					hello:"vue案例!!!"
+				}
 			})
 			
 			
