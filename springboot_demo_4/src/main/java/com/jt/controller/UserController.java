@@ -16,7 +16,19 @@ import java.util.List;
 public class UserController {
     @Autowired
     private UserService userService;
+    // @RequestMapping("/deleteAjaxUser")
+    // @ResponseBody
+    // public String deleteAjaxUser(@PathVariable Integer id){
+    //     System.err.println(id);
+    //     userService.deleteUser(id);
+    //     System.err.println("OK");
+    //     return "ok";
+    // }
 
+    @RequestMapping("/userAjaxA")
+    public String userAjaxA(){
+        return "userAjaxA";
+    }
 
     /**
      * 要求跳转到userAjax页面中
@@ -25,6 +37,17 @@ public class UserController {
     @RequestMapping("/userAjax")
     public String userAjax(){
         return "userAjax";
+    }
+
+    /**
+     * 接收Ajax请求  /findAjaxUser 查询所有的用户信息
+     * 返回  Json字符串
+     * @return
+     */
+    @RequestMapping("/findAjaxUser")
+    @ResponseBody
+    public List<User> findAjaxUser(){
+        return userService.findAll();
     }
 
 
