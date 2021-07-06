@@ -2,10 +2,17 @@
 <html>
 	<head>
 		<meta charset="utf-8">
+<<<<<<< HEAD
 		<title>VUE数据显示</title>
 		<!-- 配置样式 -->
 		<style>
 			/*渲染没有完成时 不展现*/
+=======
+		<title>数据显示案例测试</title>
+		<!-- 配置样式 -->
+		<style>
+			/* 渲染没有完成时不展现 */
+>>>>>>> origin/master
 			[v-cloak]{
 				display: none;
 			}
@@ -14,6 +21,7 @@
 	<body>
 		<div id="app">
 			<h3 v-cloak>{{hello}}</h3>
+<<<<<<< HEAD
 			<!-- 以优化后的效果进行展现 内部兼容了 v-cloak -->
 			<h3 v-text="msg"></h3>
 			<!-- 以html解析之后的效果进行展示 -->
@@ -42,6 +50,34 @@
 				
 			})
 			
+=======
+			<!-- 以优化后的效果进行展现 内部兼容了v-cloak -->
+			<h3 v-text="msg"></h3>
+			<!-- 以html解析之后的效果进行展现 -->
+			<h3 v-html="html"></h3>
+			<!-- v-pre指令 跳过vue的解析的过程,直接展现数据-->
+			<h3 v-pre>{{name}}</h3>
+			<!-- v-once指令 元素只被解析一次 -->
+			<h3 v-once>{{once}}</h3>
+			<!-- v-model 测试双向数据绑定 
+				1.服务器将数据给用户展现  2.用户需要传给数据给服务器
+			-->
+			双向数据绑定: <input name="model" v-model="model"/>
+		</div>
+		
+		<script src="../js/vue.js"></script>
+		<script>
+			const app = new Vue({
+				el: '#app',
+				data: {
+					hello: 'vue案例',
+					msg: '测试v-text指令',
+					html: '<h1>html效果展现</h1>',
+					once: '测试解析次数',
+					model: '测试双向数据绑定'
+				}
+			})
+>>>>>>> origin/master
 		</script>
 	</body>
 </html>

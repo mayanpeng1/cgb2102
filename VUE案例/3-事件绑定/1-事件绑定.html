@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件绑定操作</title>
+</head>
+<body>
+    <div id="app">
+		<!-- 要求实现num数据+1 -->
+        {{num}}
+		<!-- 添加事件绑定 -->
+		<button v-on:click="num++"> 自增</button>
+		<!-- 简化写法 -->
+		<button @click="num++">自增</button>
+		<!-- 如果操作建委复杂,可以通过方法的方式进行操作 -->
+		<button @click="addNum">方法自增</button>
+		<button @click="addNum2">方法自增</button>
+    </div>
+
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el:"#app",
+            data:{
+                num:100
+            },
+			methods:{
+				//js中方法称为函数!!!
+				addNum(){
+					//对num+1
+					this.num++;
+				},
+				addNum2(){
+					this.num = this.num+2
+				}
+			}
+        })
+
+
+    </script>
+</body>
+</html>
