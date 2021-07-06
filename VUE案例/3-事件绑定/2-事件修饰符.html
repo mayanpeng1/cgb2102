@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件绑定操作</title>
+</head>
+<body>
+    <div id="app" >
+		<!-- 事件冒泡:
+			如果事件有嵌套关系,执行完成内部事件之后,执行
+			外部事件。这种现象称之为事件冒泡
+			
+			语法:
+			1.v-on:click.stop="xxx"
+			2.@click.stop
+		 -->
+		<div @click="addNum2()">
+			{{num}}
+			<button @click.stop="addNum"> 自增1</button>
+		</div>
+		
+		<!-- 2.阻止默认行为
+			如果需要阻止标签的默认行为则添加 @click.prevent-->
+		<div>
+			<h3>阻止默认行为</h3>
+			<a href="http://www.baidu.com" @click.prevent="baidu">百度</a>
+		</div>
+		
+		<div>
+			<h3>特殊按键字符说明</h3>
+			<!-- 需求:要求用户按回车键触发 事件函数 
+				.enter  .tab  .delete   .esc   .space  .up   .down
+				.left  .right-->
+			回车键触发:<input name="username" type="text" v-on:keyup.enter="handler()"/>
+			<br>
+			删除键触发:<input name="age" type="text" v-on:keyup.delete="handler()"/>
+			<br>
+			空格键触发:<input name = "sex" type="text" v-on:keyup.space="handler( )"/>
+			<br>
+			<!-- tab有效 使用keydown操作 -->
+			tab键触发:<input name="sex" type="text" v-on:keydown.tab="handler()"/>
+		</div>
+    </div>
+
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el:"#app",
+            data:{
+                num:1
+            },
+			methods:{
+				//js中方法称为函数!!!
+				addNum:function(){
+					//对num+1
+					this.num++;
+				},
+				addNum2(){
+					this.num+=2;
+				},
+				baidu(){
+					console.log("点击百度的按钮")
+				},
+				handler(){
+					console.log("函数被执行")
+				}
+			}
+        })
+
+
+    </script>
+</body>
+</html>
