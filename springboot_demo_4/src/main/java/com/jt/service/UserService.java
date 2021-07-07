@@ -9,6 +9,8 @@ public interface UserService {
 
     List<User> findAll();
 
+    User getUserById(Integer id);
+
     void insertUser(User user);
 
     void updateUser(User user);

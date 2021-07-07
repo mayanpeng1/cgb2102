@@ -21,6 +21,11 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    public User getUserById(Integer id) {
+        return userMapper.selectById(id);
+    }
+
+    @Override
     public void insertUser(User user) {
         Integer row = userMapper.insert(user);
     }
