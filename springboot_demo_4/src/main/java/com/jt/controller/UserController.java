@@ -116,4 +116,30 @@ public class UserController {
         return userService.getUserById(id);
     }
 
+    @GetMapping("/getUser/{id}")
+    @ResponseBody
+    public User getUser1(@PathVariable Integer id){
+        return userService.getUserById(id);
+    }
+
+    @PostMapping("/addUser")
+    @ResponseBody
+    /**
+     * 接收post请求:
+     * 前端传递参数是一个JSON串
+     *  {"name":"xxx","age":"xx","sex":"xxx"}
+     *  解决方案: 可以将JSON数据根据key:value  转化为对象(get/set方法)
+     */
+    public String addUser(@RequestBody User user){
+        userService.insertUser(user);
+        return "新用户添加成功!";
+    }
+
+    @DeleteMapping("/deleteUser/{id}")
+    @ResponseBody
+    public String delete(@PathVariable  Integer id){
+        System.err.println("22");
+        userService.deleteUser(id);
+        return "删除成功";
+    }
 }

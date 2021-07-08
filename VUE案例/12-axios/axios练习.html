@@ -5,7 +5,7 @@
 		<title>axios</title>
 	</head>
 	<body>
-		
+		<h1>axios</h1>
 		<script src="../js/axios.js"></script>
 		<script>
 			//编辑axios请求
@@ -38,11 +38,30 @@
 		 }
 		 
 		 axios.get("http://localhost:8090/getUserById",{
-			 params:user
-		 })
-			.then(result =>{
+			 params:user})
+		.then(result =>{
 				console.log(result.data)
 			})
+		/*利用restFul风格实现数据传参
+		 * resuFul:
+		 * 1.参数使永/分割
+		 * 2.url中不能出现动词
+		 */
+		axios.get("http://localhost:8090/getUser/1")
+		.then(result =>{
+			console.log("restFul:"+result.data)
+		})
+		
+		axios.post("http://localhost:8090/addUser",{
+			user:{
+				name:"李四",
+				age:18,
+				sex:"女"
+			}
+		})
+		.then(result => {
+			console.log("OK")
+		})
 		 
 		</script>
 	</body>
