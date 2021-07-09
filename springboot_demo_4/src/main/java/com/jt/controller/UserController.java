@@ -5,14 +5,12 @@ import com.jt.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @Controller
+@CrossOrigin//ajax跨域请求
 public class UserController {
     @Autowired
     private UserService userService;
@@ -104,4 +102,44 @@ public class UserController {
         return "redirect:/userList";
     }
 
+    @GetMapping("/getUser")
+    @ResponseBody
+    public List<User> getUser(){
+        List<User> data = userService.findAll();
+        System.err.println("1");
+        return data;
+    }
+
+    @GetMapping("/getUserById")
+    @ResponseBody
+    public User getUserById(Integer id){
+        return userService.getUserById(id);
+    }
+
+    @GetMapping("/getUser/{id}")
+    @ResponseBody
+    public User getUser1(@PathVariable Integer id){
+        return userService.getUserById(id);
+    }
+
+    @PostMapping("/addUser")
+    @ResponseBody
+    /**
+     * 接收post请求:
+     * 前端传递参数是一个JSON串
+     *  {"name":"xxx","age":"xx","sex":"xxx"}
+     *  解决方案: 可以将JSON数据根据key:value  转化为对象(get/set方法)
+     */
+    public String addUser(@RequestBody User user){
+        userService.insertUser(user);
+        return "新用户添加成功!";
+    }
+
+    @DeleteMapping("/deleteUser/{id}")
+    @ResponseBody
+    public String delete(@PathVariable  Integer id){
+        System.err.println("22");
+        userService.deleteUser(id);
+        return "删除成功";
+    }
 }

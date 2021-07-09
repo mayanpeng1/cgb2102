@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>表单提交</title>
+	</head>
+	<body>
+		
+		<div id="app">
+			<!-- 1.定义表单 练习from标签与vue对象形成数据绑定 -->
+			<form action="http://www.baidu.com">
+				用户名:<input type="text" v-model="user.username"/><br />
+				用户详情:<textarea v-model="user.info"></textarea><br />
+				<!-- 定义下拉框 -->
+				<span>书籍:</span>
+				<select name="book" v-model="user.book">
+					<option value="java编程思想">java编程思想</option>
+					<option value="java疯狂讲义">java疯狂讲义</option>
+					<option value="java技术卷">java技术卷</option>
+				</select><br />
+				
+				<!-- 单选框 -->
+				性别:<input type="radio" value="男" name="gender" v-model="user.gender"/>男
+					<input type="radio" value="女" name="gender" v-model="user.gender"/>女
+				<br>
+				
+				<!-- 多选框练习  值有多个 使用数组-->
+				<span>爱好:</span>
+				<input type="checkbox" name="hobby" v-model="user.hobby" value="吃">吃
+				<input type="checkbox" name="hobby" v-model="user.hobby" value="喝"/>喝
+				<input type="checkbox" name="hobby" v-model="user.hobby" value="睡觉"/>睡觉
+				<!-- 阻止标签的默认行为  采用其他方式提交 -->
+				<input type="submit" value="提交" @click.prevent="addFrom()"/>
+			</form>
+			
+		</div>
+		
+		
+		<script src="../js/vue.js"></script>
+		<script>
+			const app = new Vue({
+				el :"#app",
+				data:{
+					user:{
+						username:"",
+						info:"",
+						book:"",
+						gender:"",
+						hobby:[]
+					}
+				},
+				methods:{
+					addFrom(){
+						console.log("input标签:"+this.user.username);
+						console.log("文本域:"+this.user.info)
+						console.log("下拉选:"+this.user.book)
+						console.log("复选框:"+this.user.hobby)
+					}
+				}
+			})
+			
+			
+		</script>
+	</body>
+</html>

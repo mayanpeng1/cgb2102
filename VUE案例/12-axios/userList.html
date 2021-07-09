@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--导入模板标签-->
+<html >
+	<head>
+		<meta charset="utf-8">
+		<title>axios</title>
+	</head>
+	<body>
+		<div id="app">
+			<!--准备一个表格-->
+			<table border="1px" align="center" width="600px">
+				<tr>
+					<th colspan="5">
+						<h3>表格数据</h3>
+					</th>
+				</tr>
+				<tr align="center">
+					<th>ID</th>
+					<th>名称</td>
+					<th>年龄</th>
+					<th>性别</th>
+					<th>操作</th>
+				</tr>
+				<tr align="center" v-for="list in userList">
+					<th v-text="list.id">ID</th>
+					<th v-text="list.name">名称</td>
+					<th v-text="list.age">年龄</th>
+					<th v-text="list.sex">性别</th>
+					<th>
+						<button type="button" @click="deleteUser(list.id)">删除</button>
+					</th>
+				</tr>
+			</table>
+		</div>
+		<!-- 导入vue.js -->
+		<script src="../js/vue.js"></script>
+		<!-- 导入axiox -->
+		<script src="../js/axios.js"></script>
+		<script>
+			axios.defaults.baseURL = "http://localhost:8090"
+			/*需求1.刷新页面之后,自动的发起ajax请求*/
+			const app = new Vue({
+				el: "#app",
+				data: {
+					userList:[]
+				},
+				methods: {
+					getUserList() {
+						axios.get("/getUser")
+							.then(result => {
+								this.userList=result.data
+								console.log(this.userList)
+							})
+					},
+					deleteUser(id){
+						axios.delete("/deleteUser/"+id)
+						.then()
+						this.getUserList()
+					}
+				},
+				mounted() {
+					this.getUserList()
+				}
+			})
+		</script>
+	</body>
+</html>
