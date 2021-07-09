@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!--导入模板标签-->
+<html lang="en" xml:th="http://www.thymeleaf.org" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>用户列表数据</title>
+	<!-- 引入函数类库 -->
+    <script src="/jquery-3.6.0.min.js"></script>
+	
+</head>
+<body>
+    <!--准备一个表格-->
+    <table id="userTable" border="1px" align="center" width="600px">
+        <tr>
+            <th colspan="5"><h3>用户列表</h3></th>
+        </tr>
+        <tr>
+            <th >ID</th>
+            <th >名称</td>
+            <th >年龄</th>
+            <th >性别</th>
+            <th >操作</th>
+        </tr>
+    </table>
+	
+	<script>
+        $(document).ready(function(){
+            getList();
+        });
+
+        function getList(){
+            $.getJSON("/findAjaxUser",function (result){
+                for (user of result){
+                    var id = user.id;
+                    var age = user.age;
+                    var name =user.name;
+                    var sex = user.sex;
+                    var tr = "<tr align='center'><td id='idUser' value='"+id+"'>"+id+"</td><td>"+name+"</td><td>"+age+"</td><td>"+sex+"</td>" +
+                        "<td><button id='tableUP' >修改</button><button id='tableDel' onclick='deleteById("+id+")'>删除</button></td></tr>"
+                    //4.选中id = userTable 的元素    .append()  表示追加内容
+                    $("#userTable").append(tr);
+                }
+            })
+        }
+
+        function deleteById(id){
+
+            alert(id)
+            $.post("/deleteAjaxUser",{id:id},function(result){
+                alert(id)
+                location.reload();
+            })
+        }
+	</script>
+</body>
+</html>

@@ -142,4 +142,12 @@ public class UserController {
         userService.deleteUser(id);
         return "删除成功";
     }
+
+    @PutMapping("/updateUserVUE")
+    @ResponseBody
+    public String updateUserVUE(@RequestBody User user){
+        userService.updateUser(user);
+        System.err.println("修改");
+        return "修改成功!";
+    }
 }
