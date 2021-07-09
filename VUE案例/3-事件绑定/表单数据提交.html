@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>表单数据</title>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 定义表单 -->
+			<form action="http://www.baidu.com">
+				<!-- 阻止标签的默认行为 -->
+				<input type="submit" value="提交" @click.prevent="addForm()"/>
+			</form>
+		</div>
+		
+		
+		
+		<script src="../js/vue.js"></script>
+		<script>
+			const app = new Vue({
+				el : "#app",
+				data:{
+					
+				},
+				methods:{
+					addForm(){
+						console.log("发起ajax提交数据")
+					}
+				}
+			})
+			
+		</script>
+	</body>
+</html>
