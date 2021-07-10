@@ -6,9 +6,21 @@
 	</head>
 	<body>
 		<div id="app">
-			
-			
+			<!-- 4.通过组件的名称利用标签进行调用 -->
+			<add-num-com></add-num-com>
+			<add-num-com></add-num-com>
 		</div>
+		
+		<!-- 3.定义html模板 -->
+		<template id="addNumTem">
+			<!-- 必须要有跟标签 -->
+			<div>
+				<h1>定义组件</h1>
+				<h3>数值:{{num}}</h3>
+				<button @click="addNum">自增</button>
+			</div>
+		</template>
+		
 		<!-- 1. -->
 		<script src="../js/vue.js"></script>
 		<!-- 2.定义组件 -->
@@ -22,7 +34,17 @@
 					}
 				},
 				//2.3定义组件的标签体  方式1:字符串拼接
-				template:"<div>{{num}} <button @click='addNum'></button>"
+				template:"#addNumTem",
+				methods:{
+					addNum(){
+						this.num++
+					}
+				}
+			})
+			
+			//3.定义Vue对象
+			const app = new Vue({
+				el:"#app"
 			})
 		</script>
 	</body>
