@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>组件化思想</title>
+	</head>
+	<body>
+		<div id="app">
+			
+			
+		</div>
+		<!-- 1. -->
+		<script src="../js/vue.js"></script>
+		<!-- 2.定义组件 -->
+		<script>
+			//2.1创建组件
+			Vue.component("addNumCom",{
+				//2.2定义组件内部结构
+				data(){
+					return {
+						num:0
+					}
+				},
+				//2.3定义组件的标签体  方式1:字符串拼接
+				template:"<div>{{num}} <button @click='addNum'></button>"
+			})
+		</script>
+	</body>
+</html>
