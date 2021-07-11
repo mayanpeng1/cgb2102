@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>全局与局部</title>
+	</head>
+	<body>
+		<div id="app">
+			<aaa></aaa>
+			<bbb></bbb>
+		</div>
+		<!-- 全局组件 -->
+		<template id="aaaTem">
+			<div>
+				<h1>{{msg}}</h1>
+				<!-- 全局不可以调用局部 -->
+				<!--<bbb></bbb>-->
+			</div>
+		</template>
+		
+		<!-- 局部组件 -->
+		<template id="bbbTem">
+			<div>
+				<h1>{{msg}}</h1>
+				<!-- 局部可以调用全局 -->
+				<aaa></aaa>
+			</div>
+		</template>
+		
+		<!-- 1.导入vue.js -->
+		<script src="../js/vue.js"></script>
+		<script>
+			Vue.component("aaa",{
+				data(){
+					return{
+						msg:"我是全局组件"
+					}
+				},
+				template:"#aaaTem"
+				
+			})
+			
+			let bbb={
+				data(){
+					return{
+						msg:"我是局部组件"
+					}
+				},
+				template:"#bbbTem"
+			}
+			
+			const app = new Vue({
+				el:"#app",
+				components:{
+					bbb
+				}
+			})
+				
+		</script>
+	</body>
+</html>
