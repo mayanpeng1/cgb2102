@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>局部组件</title>
+	</head>
+	<body>
+		<div id="app">
+			<hello1-com></hello1-com>
+			<person-com></person-com>
+		</div>
+		
+		<div id="AAA">
+			<hello1-com></hello1-com>
+		</div>
+		
+		<template id="hello1Tem">
+			<h3>{{msg}}</h3>
+		</template>
+		
+		<template id="personTem">
+			<h3>{{msg}}</h3>
+		</template>
+		
+		<!-- 1. -->
+		<script src="../js/vue.js"></script>
+		<!-- 2.定义组件 -->
+		<script>
+			//1.定义对象
+			let hello1={
+				data(){
+					return{
+						msg:"我是hello1"
+					}
+				},
+				template:"#hello1Tem"
+			}
+			
+			//定义第二个组件对象
+			let personCom={
+				data(){
+					return{
+						msg:"我是中国人"
+					}
+				},
+				template:"#personTem"
+			}
+		
+			const app = new Vue({
+				el:"#app",
+				//定义局部组件
+				components:{
+					//key 组件名称  vualue:组件内容
+					hello1Com:hello1,
+					//personCom:personCom
+					//如果key和value的值相同,则简化为key即可
+					personCom
+				}
+			})
+		</script>
+	</body>
+</html>
