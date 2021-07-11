@@ -113,6 +113,7 @@ public class UserController {
     @GetMapping("/getUserById")
     @ResponseBody
     public User getUserById(Integer id){
+        System.err.println("getUserById");
         return userService.getUserById(id);
     }
 
