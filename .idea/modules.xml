@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/cgb2102.iml" filepath="$PROJECT_DIR$/.idea/cgb2102.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jt/jt.iml" filepath="$PROJECT_DIR$/jt/jt.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring_demo_10_cache/spring_demo_10_cache.iml" filepath="$PROJECT_DIR$/spring_demo_10_cache/spring_demo_10_cache.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring_demo_1_ioc/spring_demo_1_ioc.iml" filepath="$PROJECT_DIR$/spring_demo_1_ioc/spring_demo_1_ioc.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring_demo_2_factory/spring_demo_2_factory.iml" filepath="$PROJECT_DIR$/spring_demo_2_factory/spring_demo_2_factory.iml" />
