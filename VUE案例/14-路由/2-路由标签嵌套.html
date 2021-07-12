@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>路由标签嵌套</title>
+	</head>
+	<body>
+		<div id="app"> 
+			<a href="http://www.baidu.com">百度</a>
+			<<!-- 2.定义路由的请求地址
+				1.router-link 在解析之后形成a标签
+				2.to在解析之后,形成href属性,实现页面跳转
+			 -->
+			<router-link to="/home">家</router-link>
+			<router-link to="/dog">宠物</router-link>
+			
+			<!-- 一般需要之当前页面中展现新组件的内容(html)  提前设定展现位  占位符 -->
+			<router-view></router-view>
+		</div>
+		
+		
+		<template id="homeTem">
+			<div>
+				<h1>这是家</h1>
+			</div>
+		</template>
+		
+		
+		<template id="dogTem">
+			<div>
+				<h1>这是宠物</h1>
+			</div>
+		</template>
+		
+		<script src="../js/vue.js"></script>
+		<script src="../js/vue-router.js"></script>
+		<script>
+			let homeCom = {
+				template:"#homeTem"
+			}
+			
+			let dogCom = {
+				template:"#dogTem"
+			}
+			/* 3. 实现请求与路由绑定 定义路由对象
+				routes: 是一个数组的结构,数组中包含对象的结构
+				pate: 拦截请求的路径名称
+				component: 组件名称
+			*/
+			const router = new VueRouter({
+				routes:[
+					//默认访问的路径   重定向
+					{path:"/",redirect:"/home"},
+					{path:"/home",component:homeCom},
+					{path:"/dog",component:dogCom}
+					]
+			})
+			
+			//4.将路由的对象与VUE实例
+			const app = new Vue({
+				el:"#app",
+				router
+			})
+		
+		</script>
+	</body>
+</html>
