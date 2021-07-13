@@ -11,12 +11,12 @@
               ref代表当前表单引用对象
              :model 是表格中封装的对象
         -->
-        <el-form ref="loginFormRef" label-width="0" class="login_form" :model="loginForm" :rules="rules" >
+        <el-form ref="loginFormRef" label-width="0" class="login_form"  >
           <el-form-item prop="username">
-            <el-input  prefix-icon="iconfont iconuser" v-model="loginForm.username"></el-input>
+            <el-input  prefix-icon="iconfont iconuser" v></el-input>
           </el-form-item>
           <el-form-item prop="password">
-            <el-input  prefix-icon="iconfont iconsuo" type="password" v-model="loginForm.password"></el-input>
+            <el-input  prefix-icon="iconfont iconsuo" type="password" ></el-input>
           </el-form-item>
           <el-form-item class="btns">
              <el-button type="primary" @click="login">登录</el-button>
@@ -32,53 +32,10 @@
 export default {
   data(){
     return {
-      loginForm: {
-        username: '',
-        password: ''
-      },
-      //定义表单的验证规则
-      rules: {
-         //定义校验用户名
-         username: [
-          { required: true, message: '请输入用户名', trigger: 'blur' },
-          { min: 3, max:30, message: '长度在 3 到 30 个字符', trigger: 'blur' }
-         ],
-         //定义校验密码
-         password: [
-          { required: true, message: '请输入密码', trigger: 'blur' },
-          { min: 3, max:30, message: '长度在 3 到 30 个字符', trigger: 'blur' }
-         ]
-      }
+
     }
   },
-  methods: {
-    resetBtn(){
-      //this对象代表当前组件对象
-      //console.log(this)
-      //实现数据重置
-      this.$refs.loginFormRef.resetFields()
-    },
-    login(){
-      //获取表单对象之后进行数据校验
-      //valid 表示校验的结果 true表示通过  false表示失败
-      this.$refs.loginFormRef.validate(async valid => {
-         //如果没有完成校验则直接返回
-         if(!valid) return
-
-         //如果校验成功,则发起ajax请求
-        const {data: result} = await this.$http.post('/user/login',this.loginForm)
-        if(result.status !== 200) return this.$message.error("用户登录失败")
-        this.$message.success("用户登陆成功")
-
-        //获取用户token信息
-        let token = result.data
-        window.sessionStorage.setItem("token",token)
-
-        //用户登录成功之后,跳转到home页面
-        this.$router.push("/home")
-      })
-    }
-  }
+  methods: { }
 }
 </script>
 
