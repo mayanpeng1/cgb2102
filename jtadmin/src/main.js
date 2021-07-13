@@ -32,6 +32,8 @@ Vue.use(VueQuillEditor)
 
 
 new Vue({
+  //Vue对象引入路由机制
   router,
+  //指定位置渲染 App.vue中渲染
   render: h => h(App)
-}).$mount('#app')
+}).$mount('#app')//执行渲染

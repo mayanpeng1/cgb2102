@@ -11,8 +11,8 @@
         <module name="spring_demo_1_ioc" />
         <module name="springboot_demo_2" />
         <module name="springboot_demo_1" />
-        <module name="springboot_demo_3_mvc" />
         <module name="jt" />
+        <module name="springboot_demo_3_mvc" />
         <module name="spring_demo_10_cache" />
         <module name="springboot_demo_4" />
         <module name="spring_demo_3_di" />
