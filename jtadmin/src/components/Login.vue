@@ -19,7 +19,7 @@
             <el-input  prefix-icon="iconfont iconsuo" type="password" v-model="loginForm.passworld"></el-input>
           </el-form-item>
           <el-form-item class="btns" >
-              <el-button type="primary">登录</el-button>
+              <el-button type="primary" @click="login">登录</el-button>
               <el-button type="info" @click="reset">重置</el-button>
           </el-form-item>
         </el-form>
@@ -61,6 +61,14 @@ export default {
           2.从vue组件对象中获取全部ref标签
       */
       this.$refs.loginFormRef.resetFields()
+    },
+    login(){
+      //1.获取表单数据
+      this.$refs.loginFormRef.validate(valid =>{
+        //2.当程序没有通过效验时  程序终止
+        if(!valid) return
+        alert("登录成功")
+      })
     }
   }
 }
