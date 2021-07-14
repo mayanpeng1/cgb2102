@@ -8,19 +8,19 @@
         </div>
 
         <!-- 登陆表单区域
-              ref代表当前表单引用对象
-             :model 是表格中封装的对象
+              ref: form 表单可以通过ref进行引用 代表当前表单引用对象
+             :model  对整个表单进行数据的绑定
         -->
-        <el-form ref="loginFormRef" label-width="0" class="login_form"  >
-          <el-form-item prop="username">
-            <el-input  prefix-icon="iconfont iconuser" v></el-input>
+        <el-form ref="loginFormRef" label-width="0"  :rules="rules" class="login_form" :model="loginForm" >
+          <el-form-item  prop="username" >
+            <el-input  prefix-icon="iconfont iconuser" v-model="loginForm.username"></el-input>
           </el-form-item>
-          <el-form-item prop="password">
-            <el-input  prefix-icon="iconfont iconsuo" type="password" ></el-input>
+          <el-form-item  prop="passworld" >
+            <el-input  prefix-icon="iconfont iconsuo" type="password" v-model="loginForm.passworld"></el-input>
           </el-form-item>
-          <el-form-item class="btns">
-             <el-button type="primary" @click="login">登录</el-button>
-              <el-button type="info" @click="resetBtn">重置</el-button>
+          <el-form-item class="btns" >
+              <el-button type="primary">登录</el-button>
+              <el-button type="info" @click="reset">重置</el-button>
           </el-form-item>
         </el-form>
       </div>
@@ -32,10 +32,36 @@
 export default {
   data(){
     return {
-
+      loginForm: {
+        username: '',
+        passworld: ''
+      },
+      rules:{//表单验证
+        username:[
+          /* required 是否为必填项  message: 提示信息   trigger: 触发条件*/
+          { required: true, message: '请输入用户名', trigger: 'blur' },
+          { min: 3, max: 30, message: '长度在 3 到 30 个字符', trigger: 'blur' }
+        ],
+        passworld:[
+          { required: true, message: '请输入密码', trigger: 'blur' },
+          { min: 3, max: 30, message: '长度在 3 到 30 个字符', trigger: 'blur' }
+        ]
+      }
     }
   },
-  methods: { }
+  methods: {
+    reset(){
+      //将表单数据改为空串
+      /* 常规操作
+         this.loginForm.username = ''
+         this.loginForm.passworld = '' */
+      /* $refs
+          1.$从vue对象中获取数据
+          2.从vue组件对象中获取全部ref标签
+      */   
+      this.$refs.loginFormRef.resetFields()
+    }
+  }
 }
 </script>
 
