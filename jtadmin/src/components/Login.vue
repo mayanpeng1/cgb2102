@@ -55,10 +55,11 @@ export default {
       /* 常规操作
          this.loginForm.username = ''
          this.loginForm.passworld = '' */
+      //this:代表当前的Vue的组件对象
       /* $refs
           1.$从vue对象中获取数据
           2.从vue组件对象中获取全部ref标签
-      */   
+      */
       this.$refs.loginFormRef.resetFields()
     }
   }
