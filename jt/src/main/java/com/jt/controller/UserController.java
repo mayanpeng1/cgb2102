@@ -5,10 +5,7 @@ import com.jt.service.UserService;
 import com.jt.vo.SysResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,6 +15,7 @@ import java.util.List;
  */
 @RestController
 @CrossOrigin
+@RequestMapping("/user")
 public class UserController {
 
     @Autowired
@@ -29,8 +27,9 @@ public class UserController {
      * 请求参数: post JSON{username:"xxx" , password:"xxxx"}
      * 返回值: SysResult 对象  (token)
      */
-    @PostMapping("/user/login")
-    public SysResult login(User user){
+    @PostMapping("/login")
+    public SysResult login(@RequestBody User user){
+        System.err.println(user);
         String token = userService.login(user);
         if(StringUtils.hasLength(token)){
             return SysResult.success(token);

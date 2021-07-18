@@ -15,8 +15,8 @@
           <el-form-item  prop="username" >
             <el-input  prefix-icon="iconfont iconuser" v-model="loginForm.username"></el-input>
           </el-form-item>
-          <el-form-item  prop="passworld" >
-            <el-input  prefix-icon="iconfont iconsuo" type="password" v-model="loginForm.passworld"></el-input>
+          <el-form-item  prop="password" >
+            <el-input  prefix-icon="iconfont iconsuo" type="password" v-model="loginForm.password"></el-input>
           </el-form-item>
           <el-form-item class="btns" >
               <el-button type="primary" @click="login">登录</el-button>
@@ -34,7 +34,7 @@ export default {
     return {
       loginForm: {
         username: '',
-        passworld: ''
+        password: ''
       },
       rules:{//表单验证
         username:[
@@ -42,7 +42,7 @@ export default {
           { required: true, message: '请输入用户名', trigger: 'blur' },
           { min: 3, max: 30, message: '长度在 3 到 30 个字符', trigger: 'blur' }
         ],
-        passworld:[
+        password:[
           { required: true, message: '请输入密码', trigger: 'blur' },
           { min: 3, max: 30, message: '长度在 3 到 30 个字符', trigger: 'blur' }
         ]
@@ -63,12 +63,34 @@ export default {
       this.$refs.loginFormRef.resetFields()
     },
     login(){
-      //1.获取表单数据
-      this.$refs.loginFormRef.validate(valid =>{
-        //2.当程序没有通过效验时  程序终止
+      this.$refs.loginFormRef.validate(async valid =>{
         if(!valid) return
-        alert("登录成功")
+
+        this.$http.post("/user/login",this.loginForm)
+        .then(result =>{
+          console.log(JSON.stringify(result.data))
+          if(result.data.status!=200) return this.$message.error("用户名或密码错误")
+          
+          this.$message.success("登录成功")
+        })
       })
+
+      // //1.获取表单数据
+      // this.$refs.loginFormRef.validate(async valid =>{
+      //   //2.当程序没有通过效验时  程序终止
+      //   if(!valid) return
+
+      //   //3.发起ajax请求,实现业务调用
+      //   let {data:result} =
+      //   await this.$http.post("/user/login",this.loginForm)
+      //   console.log(result)
+      //   if(result.status!=200){
+      //     return this.$message.error("用户名或密码错误")
+      //   }
+
+      //   this.$message.success("恭喜你登录成功");
+
+      // })
     }
   }
 }

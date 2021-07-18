@@ -1,5 +1,6 @@
 package com.jt.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.jt.mapper.UserMapper;
 import com.jt.pojo.User;
 import com.jt.service.UserService;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
 import java.util.List;
+import java.util.UUID;
 
 /**
  * @author 刘昱江
@@ -32,7 +34,14 @@ public class UserServiceImpl implements UserService {
         user.setPassword(md5Pass);
         //根据其中不为null 的数据当做where 条件
         //sql: select * from user where u = #{u} and p = #{p}
-        return null;
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>(user);
+        User userDB = userMapper.selectOne(queryWrapper);
+        if (userDB==null){
+            return null;
+        }
+        String token = UUID.randomUUID().toString().replace("-", "");
+        return token;
+
     }
 
 
