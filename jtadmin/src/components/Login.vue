@@ -65,32 +65,46 @@ export default {
     login(){
       this.$refs.loginFormRef.validate(async valid =>{
         if(!valid) return
+        //1.获取表单数据
+        this.$refs.loginFormRef.validate(async valid =>{
+          //2.当程序没有通过效验时  程序终止
+          if(!valid) return
 
-        this.$http.post("/user/login",this.loginForm)
-        .then(result =>{
-          console.log(JSON.stringify(result.data))
-          if(result.data.status!=200) return this.$message.error("用户名或密码错误")
-          
-          this.$message.success("登录成功")
+          //3.发起ajax请求,实现业务调用
+          let {data:result} =
+          await this.$http.post("/user/login",this.loginForm)
+          console.log(result)
+          if(result.status!=200){
+            return this.$message.error("用户名或密码错误")
+          }
+
+          this.$message.success("恭喜你登录成功");
+          //如何获取 token  result.data
+          //将用户信息保存到session中
+          window.sessionStorage.setItem("token",result.data)
+          //window.sessionStorage.removeItem("token")//删除
+          //window.sessionStorage.clear()//全部删除
+
+
+
+          //5.登录成功之后,跳转到/home页面中
+          this.$router.push("/home")
+
         })
+
+        // this.$http.post("/user/login",this.loginForm)
+        // .then(result =>{
+        //   console.log(JSON.stringify(result.data))
+        //   if(result.data.status!=200) return this.$message.error("用户名或密码错误")
+
+        //   this.$message.success("登录成功")
+        // })
+
       })
 
-      // //1.获取表单数据
-      // this.$refs.loginFormRef.validate(async valid =>{
-      //   //2.当程序没有通过效验时  程序终止
-      //   if(!valid) return
 
-      //   //3.发起ajax请求,实现业务调用
-      //   let {data:result} =
-      //   await this.$http.post("/user/login",this.loginForm)
-      //   console.log(result)
-      //   if(result.status!=200){
-      //     return this.$message.error("用户名或密码错误")
-      //   }
 
-      //   this.$message.success("恭喜你登录成功");
 
-      // })
     }
   }
 }
