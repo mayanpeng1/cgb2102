@@ -19,6 +19,12 @@ public class RightsController {
     @Autowired
     private RightsService RightsService;
 
+    /**
+     * 查询左侧权限列表数据 , 要求查询2级列表数据
+     * URL: /rights/getRightsList
+     * 无参数
+     * 返回值 : SysResult对象
+     */
     @GetMapping("/getRightsList")
     public SysResult getRightsList(){
         List<Rights> data = RightsService.getRightsList();

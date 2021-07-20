@@ -97,23 +97,23 @@
         window.sessionStorage.clear()
         //2.跳转到用户登录界面
         this.$router.push("/login")
+      },
+
+      async getMenuList() {
+       const {data: result} =  await this.$http.get('/rights/getRightsList')
+       if(result.status !== 200) return this.$message.error("左侧菜单查询失败")
+       this.menuList = result.data
+
+      },
+      //设定左侧折叠展开效果
+      collspseClick() {
+        this.isCollapse = !this.isCollapse
+      },
+      defaultActiveMenu(activeMenu){
+        //为了实现返回之后的选中效果,应该将数据保存到第三方中sessionStory
+        window.sessionStorage.setItem("activeMenu",activeMenu)
+        this.defaultActive = activeMenu
       }
-
-      // async getMenuList() {
-      //  const {data: result} =  await this.$http.get('/rights/getRightsList')
-      //  if(result.status !== 200) return this.$message.error("左侧菜单查询失败")
-      //  this.menuList = result.data
-
-      // },
-      // //设定左侧折叠展开效果
-      // collspseClick() {
-      //   this.isCollapse = !this.isCollapse
-      // },
-      // defaultActiveMenu(activeMenu){
-      //   //为了实现返回之后的选中效果,应该将数据保存到第三方中sessionStory
-      //   window.sessionStorage.setItem("activeMenu",activeMenu)
-      //   this.defaultActive = activeMenu
-      // }
     }
   }
 </script>
