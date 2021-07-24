@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.jt.mapper.UserMapper;
 import com.jt.pojo.User;
 import com.jt.service.UserService;
+import com.jt.vo.PageResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
@@ -42,6 +43,11 @@ public class UserServiceImpl implements UserService {
         String token = UUID.randomUUID().toString().replace("-", "");
         return token;
 
+    }
+
+    @Override
+    public PageResult getUserList(PageResult pageResult) {
+        return null;
     }
 
 

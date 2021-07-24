@@ -1,6 +1,7 @@
 package com.jt.service;
 
 import com.jt.pojo.User;
+import com.jt.vo.PageResult;
 
 import java.util.List;
 
@@ -11,5 +12,9 @@ import java.util.List;
 public interface UserService {
     List<User> findAll();
 
+    //用户登录判断
     String login(User user);
+
+    //分页查询
+    PageResult getUserList(PageResult pageResult);
 }
