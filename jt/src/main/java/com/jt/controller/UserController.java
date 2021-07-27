@@ -55,6 +55,12 @@ public class UserController {
         return SysResult.success(pageResult);
     }
 
+    @PutMapping("/status/{id}/{status}")
+    public SysResult updateStatus(@PathVariable Integer id, @PathVariable boolean status){
+        System.err.println("aa:"+status);
+        return SysResult.success();
+    }
+
 
     @GetMapping("/hello")
     public List<User> hello(){

@@ -32,6 +32,7 @@
            <el-table-column prop="phone" label="电话"></el-table-column>
            <el-table-column prop="email" label="邮箱"></el-table-column>
            <el-table-column prop="status" label="状态">
+             <!-- 作用域插槽    solt-scope = "ccope"  表示当前行对象的全部属性               -->
              <template slot-scope="scope">
                 <el-switch v-model="scope.row.status" @change="updateStatus(scope.row)"
                   active-color="#13ce66" inactive-color="#ff4949">
@@ -222,11 +223,13 @@
         if(result.status !== 200) return this.$message.error("用户状态修改失败!")
         this.$message.success("用户状态修改成功!")
       },
+      //如果调用分页的结构,则会自动传递pageSize数据
       handleSizeChange(pageSize){
-        //console.log("每页展现的条数"+pageSize)
+        console.log("每页展现的条数"+pageSize)
         this.queryInfo.pageSize = pageSize
         this.getUserList()
       },
+      //如果调用页数变化,则会自动传递pageNum数据
       handleCurrentChange(pageNum){
         //console.log("页数:"+pageNum)
         this.queryInfo.pageNum = pageNum
