@@ -69,6 +69,12 @@ public class UserController {
         return SysResult.success();
     }
 
+    @DeleteMapping("/{id}")
+    public SysResult deleteUserById(@PathVariable Integer id){
+        userService.deleteUserById(id);
+        return SysResult.success();
+    }
+
     @GetMapping("/hello")
     public List<User> hello(){
 

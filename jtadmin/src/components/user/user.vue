@@ -226,7 +226,7 @@
           if(result.status!=200) return this.$message.error("用户状态修改失败!")
           this.$message.success("用户状态修改成功!")
         })
-        
+
       },
       //如果调用分页的结构,则会自动传递pageSize数据
       handleSizeChange(pageSize){
@@ -292,11 +292,11 @@
                    confirmButtonText: '确定',
                    cancelButtonText: '取消',
                    type: 'warning'
-                 }).catch(error => error)
+                 }).catch(error => error) //接受error参数 并且返回error
 
          //如果确认  confirm  如果取消 cancel
          if(result !== 'confirm'){
-            this.$message.info("删除取消")
+           return this.$message.info("删除取消")
          }
          const {data: result2} = await this.$http.delete(`/user/${user.id}`)
          if(result2.status !== 200) return this.$message.error("删除失败")

@@ -20,4 +20,7 @@ public interface UserService {
 
     //修改用户状态  是否是禁用
     void updateStatus(User user);
+    
+    //删除用户
+    void deleteUserById(Integer id);
 }
