@@ -61,6 +61,11 @@ public class UserController {
         return SysResult.success();
     }
 
+    @RequestMapping("/status1")
+    public SysResult updateStatus1(Integer id,boolean status){
+        System.err.println("aa:"+status);
+        return SysResult.success();
+    }
 
     @GetMapping("/hello")
     public List<User> hello(){

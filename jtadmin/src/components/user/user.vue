@@ -219,8 +219,12 @@
       async updateStatus(user){
          //实现用户状态修改  注意使用模版字符串  ES6中提出的新用法 ${key}
         //const {data: result} = await this.$http.put('/user/status/'+user.id+'/'+user.status)
-        const {data: result} = await this.$http.put(`/user/status/${user.id}/${user.status}`)
-        if(result.status !== 200) return this.$message.error("用户状态修改失败!")
+        //const {data: result} = await this.$http.put(`/user/status/${user.id}/${user.status}`)
+        // if(result.status !== 200) return this.$message.error("用户状态修改失败!")
+        this.$http.post('/user/status/','id='+user.id+'&status='+user.status)
+        .then( result =>{
+          alert("a")
+        })
         this.$message.success("用户状态修改成功!")
       },
       //如果调用分页的结构,则会自动传递pageSize数据
