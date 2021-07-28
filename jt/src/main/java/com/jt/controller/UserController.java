@@ -56,14 +56,16 @@ public class UserController {
     }
 
     @PutMapping("/status/{id}/{status}")
-    public SysResult updateStatus(@PathVariable Integer id, @PathVariable boolean status){
-        System.err.println("aa:"+status);
+    public SysResult updateStatus(User user){
+        userService.updateStatus(user);
         return SysResult.success();
     }
 
     @RequestMapping("/status1")
     public SysResult updateStatus1(Integer id,boolean status){
-        System.err.println("aa:"+status);
+        User user = new User();
+        user.setId(id).setStatus(status);
+        userService.updateStatus(user);
         return SysResult.success();
     }
 

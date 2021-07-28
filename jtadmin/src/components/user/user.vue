@@ -221,11 +221,12 @@
         //const {data: result} = await this.$http.put('/user/status/'+user.id+'/'+user.status)
         //const {data: result} = await this.$http.put(`/user/status/${user.id}/${user.status}`)
         // if(result.status !== 200) return this.$message.error("用户状态修改失败!")
-        this.$http.post('/user/status/','id='+user.id+'&status='+user.status)
+        this.$http.post('/user/status1/','id='+user.id+'&status='+user.status)
         .then( result =>{
-          alert("a")
+          if(result.status!=200) return this.$message.error("用户状态修改失败!")
+          this.$message.success("用户状态修改成功!")
         })
-        this.$message.success("用户状态修改成功!")
+        
       },
       //如果调用分页的结构,则会自动传递pageSize数据
       handleSizeChange(pageSize){

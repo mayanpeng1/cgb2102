@@ -66,5 +66,10 @@ public class UserServiceImpl implements UserService {
         return pageResult;
      }
 
+    @Override
+    public void updateStatus(User user) {
+        userMapper.updateById(user);
+    }
+
 
 }

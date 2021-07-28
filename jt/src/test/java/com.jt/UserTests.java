@@ -32,7 +32,13 @@ public class UserTests {
 
         pageResult = userService.getUserList(pageResult);
         System.err.println(pageResult);
+    }
 
-
+    @Test
+    public void updateStatus(){
+        User user = new User();
+        user.setId(6).setStatus(true);
+        userService.updateStatus(user);
+        System.err.println("OK");
     }
 }

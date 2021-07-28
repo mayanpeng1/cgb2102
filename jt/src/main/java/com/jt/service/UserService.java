@@ -17,4 +17,7 @@ public interface UserService {
 
     //分页查询
     PageResult getUserList(PageResult pageResult);
+
+    //修改用户状态  是否是禁用
+    void updateStatus(User user);
 }
