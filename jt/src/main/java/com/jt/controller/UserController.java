@@ -75,6 +75,19 @@ public class UserController {
         return SysResult.success();
     }
 
+    /**
+     * 业务需求: 实现用户新增
+     * URL: /user/addUser
+     * 参数: form 表单进行提交  JSON串
+     * 类型: post请求
+     * 返回值: SysResult对象
+     */
+    @PostMapping("/addUser")
+    public SysResult addUser(User user){
+        userService.addUser(user);
+        return SysResult.success();
+    }
+
     @GetMapping("/hello")
     public List<User> hello(){
 

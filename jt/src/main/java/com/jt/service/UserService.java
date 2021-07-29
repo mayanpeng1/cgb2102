@@ -23,4 +23,7 @@ public interface UserService {
     
     //删除用户
     void deleteUserById(Integer id);
+
+    //添加用户
+    void addUser(User user);
 }
