@@ -90,12 +90,23 @@ public class UserServiceImpl implements UserService {
      * @param user
      */
     @Override
-    @Transactional()
+    @Transactional
     public void addUser(User user) {
         String md5Pass = DigestUtils.md5DigestAsHex(user.getPassword().getBytes());
         user.setPassword(md5Pass);
         user.setStatus(true);//状态默认值为true
         userMapper.insert(user);
+    }
+
+    @Override
+    public User getUserById(Integer id) {
+        User user = userMapper.selectById(id);
+        return user;
+    }
+    //修改用户信息 sql: update user set xxxx where id...
+    @Override
+    public void updateUser(User user) {
+        userMapper.updateById(user);
     }
 
 

@@ -60,7 +60,7 @@ public class UserController {
         userService.updateStatus(user);
         return SysResult.success();
     }
-
+    //修改用户状态
     @RequestMapping("/status1")
     public SysResult updateStatus1(Integer id,boolean status){
         User user = new User();
@@ -68,12 +68,24 @@ public class UserController {
         userService.updateStatus(user);
         return SysResult.success();
     }
-
+    //根据id 删除用户
     @DeleteMapping("/{id}")
     public SysResult deleteUserById(@PathVariable Integer id){
         userService.deleteUserById(id);
         return SysResult.success();
     }
+
+    /**
+     * 业务分析: 根据用户ID查询数据库
+     * URL地址:/user/{id}
+     * 返回值: SysResult对象
+     */
+    @GetMapping("/{id}")
+    public SysResult getUserById(@PathVariable Integer id){
+        User user = userService.getUserById(id);
+        return SysResult.success(user);
+    }
+
 
     /**
      * 业务需求: 实现用户新增
@@ -83,8 +95,14 @@ public class UserController {
      * 返回值: SysResult对象
      */
     @PostMapping("/addUser")
-    public SysResult addUser(User user){
+    public SysResult addUser(@RequestBody User user){
         userService.addUser(user);
+        return SysResult.success();
+    }
+
+    @PutMapping("/updateUser")
+    public SysResult updateUser(@RequestBody User user){
+        userService.updateUser(user);
         return SysResult.success();
     }
 

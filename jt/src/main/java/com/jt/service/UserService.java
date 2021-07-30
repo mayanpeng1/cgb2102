@@ -26,4 +26,10 @@ public interface UserService {
 
     //添加用户
     void addUser(User user);
+
+    //根据id查找对应的用户
+    User getUserById(Integer id);
+
+    //修改用户信息
+    void updateUser(User user);
 }
