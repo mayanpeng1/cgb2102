@@ -35,8 +35,8 @@
           <!-- 定义作用域插槽 定义标签等级-->
           <template slot-scope="scope">
             <el-tag effect="dark" v-if="scope.row.level == 1">一级分类</el-tag>
-            <el-tag effect="dark" type="warning" v-if="scope.row.level == 2">二级分类</el-tag>
-            <el-tag effect="dark" type="danger" v-if="scope.row.level == 3">三级分类</el-tag>
+            <el-tag effect="dark" type="warning" v-else-if="scope.row.level == 2">二级分类</el-tag>
+            <el-tag effect="dark" type="danger" v-else>三级分类</el-tag>
           </template>
         </el-table-column>
         <el-table-column label="操作">
@@ -167,7 +167,7 @@
       },
       //当选择项发生变化时,触发该函数
       parentItemCatChange() {
-        console.log(this.selectedKeys)
+        console.log("aa="+this.selectedKeys)
         console.log(this.itemCatForm)
         //如果选中节点的长度>0 则表示不是一级商品分类
         if (this.selectedKeys.length > 0) {
@@ -180,6 +180,7 @@
           this.itemCatForm.parentId = 0
           this.itemCatForm.level = 1
         }
+        console.log(this.itemCatForm)
       },
       async addItemCatForm() {
         //先将整个表单进行校验

@@ -26,4 +26,6 @@ public class ItemCat extends BasePojo{
     private Integer level;      //商品分类等级  1 2 3
     @TableField(exist = false)
     private List<ItemCat> children;
+
+
 }

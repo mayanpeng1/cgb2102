@@ -7,6 +7,7 @@ import Login from '../components/Login.vue'
 import Home from '../components/Home.vue'
 import User from '../components/user/user.vue'
 import Welcome from '../components/Welcome.vue'
+import ItemCat from '../components/items/ItemCat.vue'
 
 //在vue对象中声明路由对象 整个脚手架 中都可以引用路由
 Vue.use(VueRouter)
@@ -16,7 +17,8 @@ const routes = [
   {path:'/home', component: Home, redirect:'/welcome',
     children:[
       {path:'/user',component:User},
-      {path:'/welcome', component:Welcome}
+      {path:'/welcome', component:Welcome},
+      {path:'/itemCat',component:ItemCat}
   ]}
 ]
 
