@@ -1,5 +1,6 @@
 package com.jt.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.jt.mapper.ItemCatMapper;
 import com.jt.pojo.ItemCat;
 import com.jt.service.ItemCatService;
@@ -93,5 +94,48 @@ public class ItemCatServiceImpl implements ItemCatService {
     @Override
     public void saveItemCat(ItemCat itemCat) {
         itemCatMapper.insert(itemCat);
+    }
+
+    //删除商品
+    @Override
+    public void deleteItemCat(Integer id, Integer level) {
+        //如果是一级菜单
+        if(level==3){
+            itemCatMapper.deleteById(id);
+        }
+        //如果是二级商品
+        if(level==2){
+            //先找到二级  菜单的  子级 3级菜单
+            QueryWrapper<ItemCat> queryWrapper = new QueryWrapper<>();
+            queryWrapper.eq("parent_id", id);
+            itemCatMapper.delete(queryWrapper);
+            //然后再删除 二级菜单
+            itemCatMapper.deleteById(id);
+        }
+
+        //如果是一级菜单
+        if(level==1){
+            //先找到所有的二级菜单
+            QueryWrapper<ItemCat> queryWrapper = new QueryWrapper();
+            queryWrapper.eq("parent_id", id);
+            List<Object> towList = itemCatMapper.selectObjs(queryWrapper);
+            for (Object towId : towList) {
+                //根据二级菜单id  找到 三级菜单id  进行删除
+                QueryWrapper<ItemCat> queryWrapper2 = new QueryWrapper<>();
+                queryWrapper2.eq("parent_id", towId);
+                itemCatMapper.delete(queryWrapper2);
+
+                //再根据2级id  删除 2级菜单
+                Integer tow = (Integer) towId;
+                //删除二级菜单
+                itemCatMapper.deleteById(tow);
+            }
+            //删除三级
+            itemCatMapper.deleteById(id);
+
+        }
+
+
+
     }
 }

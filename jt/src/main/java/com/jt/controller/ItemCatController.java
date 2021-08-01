@@ -32,4 +32,10 @@ public class ItemCatController {
         itemCatService.saveItemCat(itemCat);
         return SysResult.success();
     }
+
+    @DeleteMapping("/deleteItemCat")
+    public SysResult deleteItemCat(Integer id,Integer level){
+        itemCatService.deleteItemCat(id,level);
+        return SysResult.success();
+    }
 }

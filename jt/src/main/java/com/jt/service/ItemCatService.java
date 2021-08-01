@@ -13,4 +13,7 @@ public interface ItemCatService {
 
     //商品新增业务接口
     void saveItemCat(ItemCat itemCat);
+
+    //删除商品
+    void deleteItemCat(Integer id, Integer level);
 }

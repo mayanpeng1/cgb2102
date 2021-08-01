@@ -20,7 +20,7 @@ public class ItemTest {
         Map<Integer, List<ItemCat>> map = itemCatService.getMap();
         System.err.println(map);
         for (Integer integer : map.keySet()) {
-            System.err.println("key="+integer+",value="+map.get(integer));
+            System.out.println("key="+integer+",value="+map.get(integer));
         }
     }
 
@@ -28,7 +28,7 @@ public class ItemTest {
     public void getItemCat(){
         List<ItemCat>list = itemCatService.findItemCatList(3);
         for (ItemCat itemCat : list) {
-            System.err.println(itemCat);
+            System.out.println(itemCat);
         }
 
     }
