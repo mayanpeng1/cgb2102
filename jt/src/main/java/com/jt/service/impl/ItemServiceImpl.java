@@ -36,4 +36,15 @@ public class ItemServiceImpl implements ItemService {
         //返回分页对象
         return pageResult;
     }
+
+    @Override
+    public void updateItemStatus(Item item) {
+        itemMapper.updateById(item);
+
+    }
+
+    @Override
+    public void deleteItemById(Integer id) {
+        itemMapper.deleteById(id);
+    }
 }

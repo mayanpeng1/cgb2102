@@ -1,13 +1,11 @@
 package com.jt.controller;
 
+import com.jt.pojo.Item;
 import com.jt.service.ItemService;
 import com.jt.vo.PageResult;
 import com.jt.vo.SysResult;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin
@@ -29,4 +27,17 @@ public class ItemController {
         return SysResult.success(pageResult);
     }
 
+    @PutMapping("/updateItemStatus")
+    public SysResult updateItemStatus(@RequestBody  Item item){
+        System.err.println("updateid="+item.getId());
+        itemService.updateItemStatus(item);
+        return SysResult.success();
+    }
+
+    @DeleteMapping("/deleteItemById")
+    public SysResult deleteItemById(Integer id){
+        System.err.println("deleteItemById:"+id);
+        itemService.deleteItemById(id);
+        return SysResult.success();
+    }
 }
