@@ -2,6 +2,7 @@ package com.jt.controller;
 
 import com.jt.pojo.Item;
 import com.jt.service.ItemService;
+import com.jt.vo.ItemVO;
 import com.jt.vo.PageResult;
 import com.jt.vo.SysResult;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,17 @@ public class ItemController {
     public SysResult deleteItemById(Integer id){
         System.err.println("deleteItemById:"+id);
         itemService.deleteItemById(id);
+        return SysResult.success();
+    }
+
+    /**
+     * 实现商品新镇操作
+     * 参数:{item,itemDesc}
+     */
+
+    @PostMapping("/saveItem")
+    public SysResult saveItem(@RequestBody ItemVO itemVO){
+        itemService.saveItem(itemVO);
         return SysResult.success();
     }
 }

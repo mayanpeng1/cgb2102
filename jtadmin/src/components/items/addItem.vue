@@ -46,7 +46,12 @@
             </el-form-item>
           </el-tab-pane>
 
-          <!-- 实现图片上传 multiple支持多选文件 -->
+          <!-- 实现图片上传 multiple支持多选文件
+              :on-preview :成功之后展现数据时回调
+              :on-remove  移除操作时执行
+              :on-success = 成功之后立即回调
+              name: 文件上传时的名称
+           -->
           <el-tab-pane label="商品图片" name="1">
             <el-upload class="upload-demo" :action="uploadUrl" :on-preview="handlePreview" :on-remove="handleRemove"
               :on-success="handleSuccess" list-type="picture" multiple drag>
@@ -173,6 +178,7 @@
         }
       },
       //预览图片的方法
+      //预览图片的方法 上传成功之后的一个回调
       handlePreview(file) {
         //获取图片的虚拟路径
         this.imageUrlPath = file.response.data.urlPath

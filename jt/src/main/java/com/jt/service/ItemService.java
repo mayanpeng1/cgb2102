@@ -1,6 +1,7 @@
 package com.jt.service;
 
 import com.jt.pojo.Item;
+import com.jt.vo.ItemVO;
 import com.jt.vo.PageResult;
 
 public interface ItemService {
@@ -12,4 +13,7 @@ public interface ItemService {
 
     //删除商品列表
     void deleteItemById(Integer id);
+
+    //实现商品新增
+    void saveItem(ItemVO itemVO);
 }

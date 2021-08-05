@@ -14,6 +14,6 @@ import lombok.experimental.Accessors;
 public class ItemDesc extends BasePojo{
 
     private Integer id;
-    private String itemDesc;
+    private String itemDesc; //该属性是保存的是页面HTML代码片段
 
 }
