@@ -10,7 +10,7 @@ import lombok.experimental.Accessors;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ImageVO {
-    private String virtuaPath;//文件的动态路径
+    private String virtualPath;//文件的动态路径
     private String urlPath;  //文件的网络路径
     private String fileName; //文件名称
 

@@ -22,8 +22,12 @@ public class FileController {
     private FileService fileService;
 
     @PostMapping("/upload")
-    public SysResult uploadFile(MultipartFile file){
+    public SysResult uploadFile(MultipartFile file) throws IOException{
         ImageVO imageVO = fileService.upload(file);
+        //如果imageVO 为null  说明文件上传失败
+        if(imageVO==null){
+            return SysResult.fall();
+        }
         return SysResult.success();
     }
     /**
@@ -36,7 +40,7 @@ public class FileController {
      *      3.拼接文件的全路径
      *      4.实现上传
      */
-    @PostMapping("/upload")
+    //@PostMapping("/upload")
     public SysResult upload(MultipartFile file) throws IOException {
         //1.获取文件名称
         String fileName = file.getOriginalFilename();

@@ -5,6 +5,10 @@ import com.jt.vo.ImageVO;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+
 @Service
 public class FileServiceImpl implements FileService {
     /**
@@ -20,7 +24,26 @@ public class FileServiceImpl implements FileService {
      */
     @Override
     public ImageVO upload(MultipartFile file) {
-        //1.检验图片类型
+        //1.检验图片类型  ??  jpg|png|gif
+        String fileName = file.getOriginalFilename();
+        //将所有字符全部转化为小写之后检验    a.jpg  A.JPG
+        fileName = fileName.toLowerCase();
+        if(!fileName.matches("^.+\\.(jpg|png|gif)$")){
+            return null;
+        }
+        //2.恶意程序校验   通过宽度/高度进行判断
+        //将文件强制转化为图片
+        try {
+            BufferedImage bufferedImage = ImageIO.read(file.getInputStream());
+            int width = bufferedImage.getWidth();
+            int height = bufferedImage.getHeight();
+            if (width==0 || height ==0){
+                return null;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
 
         return null;
     }
