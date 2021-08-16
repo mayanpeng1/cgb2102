@@ -6,7 +6,12 @@ import com.jt.vo.PageResult;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 
 @SpringBootTest
@@ -40,5 +45,15 @@ public class UserTests {
         user.setId(6).setStatus(true);
         userService.updateStatus(user);
         System.err.println("OK");
+    }
+
+    @Test
+    public  void aaa(){
+        String date = new SimpleDateFormat("/yyyy/MM/dd/").format(new Date());
+        System.err.println(date);
+
+        LocalDateTime dateTime = LocalDateTime.now();
+        String time = DateTimeFormatter.ofPattern("/yyyy/MM/dd/").format(dateTime);
+        System.out.println(time);
     }
 }
