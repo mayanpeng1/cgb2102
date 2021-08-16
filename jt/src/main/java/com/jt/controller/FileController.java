@@ -28,7 +28,7 @@ public class FileController {
         if(imageVO==null){
             return SysResult.fall();
         }
-        return SysResult.success();
+        return SysResult.success(imageVO);
     }
     /**
      * 文件上传入门案例
