@@ -14,6 +14,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.UUID;
 
 @Service
 public class FileServiceImpl implements FileService {
@@ -56,7 +57,7 @@ public class FileServiceImpl implements FileService {
             return null;
         }
 
-        // 保存文件的子级文件夹
+        //3. 保存文件的子级文件夹
         //获取当前时间年月
         LocalDateTime now = LocalDateTime.now();
         String dateDir = DateTimeFormatter.ofPattern("/yyyy/MM/dd/").format(now);
@@ -67,6 +68,34 @@ public class FileServiceImpl implements FileService {
         if(!dirFile.exists()){
             dirFile.mkdirs();
         }
-        return null;
+        // 4.重新设定文件名称 UUID
+        String uuid = UUID.randomUUID().toString().replace("-", "");
+        //截取文件的后缀
+        int index = fileName.lastIndexOf(".");
+        String fileType = fileName.substring(index);
+        String realFileName = uuid+fileType;
+
+        //5.实现文件上传
+        File dest = new File(fileDir,realFileName);
+        try {
+            file.transferTo(dest);
+
+            //6.封装VO对象
+            ImageVO imageVO = new ImageVO();
+            //储存文件磁盘地址
+            imageVO.setVirtualPath(fileDir+realFileName);
+            //存储文件名称
+            imageVO.setFileName(realFileName);
+            //设定网络访问地址
+            //http://image.jt.com/2021/11/11/uuid.jpg
+            String url = urlPath + realFileName;
+            imageVO.setUrlPath(url);
+            return imageVO;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+
     }
 }
