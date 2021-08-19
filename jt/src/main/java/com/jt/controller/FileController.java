@@ -4,10 +4,7 @@ import com.jt.service.FileService;
 import com.jt.vo.ImageVO;
 import com.jt.vo.SysResult;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -29,6 +26,15 @@ public class FileController {
             return SysResult.fall();
         }
         return SysResult.success(imageVO);
+    }
+
+    //实现文件删除
+    @DeleteMapping("/deleteFile")
+    public SysResult deleteFile(String virtualPath){
+        File file = new File(virtualPath);
+        //删除文件
+        file.delete();
+        return SysResult.success();
     }
     /**
      * 文件上传入门案例

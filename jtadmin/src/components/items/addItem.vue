@@ -180,8 +180,11 @@
       //预览图片的方法
       //预览图片的方法 上传成功之后的一个回调
       handlePreview(file) {
+        console.log(file)
         //获取图片的虚拟路径
         this.imageUrlPath = file.response.data.urlPath
+        console.log(file.response.data.virtualPath)
+        console.log(this.imageUrlPath)
         this.dialogImageVisible = true
       },
       //移除图片的方法
