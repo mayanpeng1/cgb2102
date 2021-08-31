@@ -88,7 +88,7 @@ public class FileServiceImpl implements FileService {
             imageVO.setFileName(realFileName);
             //设定网络访问地址
             //http://image.jt.com/2021/11/11/uuid.jpg
-            String url = urlPath +fileDir+ realFileName;
+            String url = urlPath +dateDir+ realFileName;
             imageVO.setUrlPath(url);
             return imageVO;
         } catch (IOException e) {
